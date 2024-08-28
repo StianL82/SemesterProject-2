@@ -28,4 +28,40 @@
 }
 
 
+/*---------- Divider ----------*/
+
+.divider {
+  width: 90%;
+  height: clamp(40px, 6vw, 120px);
+  background-image: url('/images/divider.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+/*---------- Card ----------*/
+
+/* .custom-card {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #ccc;
+} */
+
+.card-img-overlay {
+  position: absolute;
+  left: -15px;
+}
+
+.card-footer a {
+  color: black;
+  text-decoration: none;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+
 
