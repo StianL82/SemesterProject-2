@@ -10,3 +10,12 @@
 @import "../../node_modules/bootstrap/scss/utilities";		
 		
 @import "../../node_modules/bootstrap/scss/bootstrap";		
+
+
+/*---------- My custom CSS ----------*/
+
+@import "global";
+@import "ui";
+@import "components";
+@import "media";
+@import "layout";
