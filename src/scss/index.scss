@@ -1,4 +1,34 @@
-//Imports		
+/*---------- My Google Fonts ----------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Satisfy&family=Shadows+Into+Light&display=swap');
+
+
+/*---------- My Changes to the Bootstrap CSS ----------*/
+
+
+/* $info: #D9D0BF;
+$dark: #303531;
+$info2: #B59482;
+$primary:green;
+$custom-grey: #605D5D;
+$custom-light-grey: #e6e5e5;
+$warning: #E4970B;
+$danger: #761313;
+
+$theme-colors: (
+  "info":        $info,
+  "warning":     $warning,
+  "danger":      $danger,
+  "primary":     $primary,
+  "dark":        $dark,
+  "info2":       $info2,
+  "custom-grey": $custom-grey,  
+  "custom-light-grey": $custom-light-grey,
+); */
+
+
+/*---------- My Imports ----------*/	
 		
 @import "../../node_modules/bootstrap/scss/functions";		
 @import "../../node_modules/bootstrap/scss/variables";		

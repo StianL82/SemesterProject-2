@@ -299,25 +299,26 @@ $cyans: (
 
 // scss-docs-start theme-color-variables
 $primary:       $blue ;
-$secondary:     $gray-600 ;
+$secondary:     #A6A6A6 ;
 $success:       $green ;
-$info:          $cyan ;
+$info:          #D9D0BF ;
 $warning:       $yellow ;
 $danger:        $red ;
-$light:         $gray-100 ;
-$dark:          $gray-900 ;
+$light:         #F2F2F2 ;
+$dark:          #595959 ;
+$light-blue:    #9FBEC8 ;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary":    $primary,
-  "secondary":  $secondary,
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark
+  "dark":       $dark,
+  "light-blue": $light-blue
 ) ;
 // scss-docs-end theme-colors-map
 

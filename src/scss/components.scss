@@ -1,0 +1,31 @@
+/*---------- Carousel ----------*/	
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev {
+  left: -60px; /* Flytt pilene til venstre for kortene */
+}
+
+.carousel-control-next {
+  right: -60px; /* Flytt pilene til høyre for kortene */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black; /* Gjør ikonene svarte */
+}
+
+
+
