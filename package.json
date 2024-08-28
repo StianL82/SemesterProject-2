@@ -4,16 +4,21 @@
   "description": "This is the repo for my Semester Project 2 at NOROFF",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Test\" && exit 1",
+    "build": "sass src/scss:dist/css",
+    "dev": "npm-run-all --parallel watch start-server",
+    "watch": "sass --watch src/scss:dist/css",
+    "start-server": "live-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "Stian Lilleng <stian.lilleng@gmail.com",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
     "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
     "sass": "^1.77.8"
   }
 }
