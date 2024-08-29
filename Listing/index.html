@@ -3,7 +3,281 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Single Listing Page | AuctionHouse</title>
+    <meta
+      name="description"
+      content="View a single listing from AuctionHouse. Log in to the page to make bids."
+    />
+    <title>Single listing Page | AuctionHouse</title>
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script type="module" src="/js/index.mjs"></script>
+    <link rel="icon" href="/images/logo.png" />
   </head>
-  <body></body>
+  <body class="bg-light FixedNav">
+    <header>
+      <nav class="navbar fixed-top navbar-expand-md bg-dark">
+        <div class="container">
+          <div class="brand-logo">
+            <a class="navbar-brand" href="#">
+              <img
+                src="/images/logo.png"
+                alt="Logo"
+                width="100"
+                height="100"
+                class="d-inline-block align-text-top"
+              />
+            </a>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="ms-auto">
+              <div class="nav-item dropdown py-3 d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-warning me-2 me-sm-4 mt-4 mt-md-0"
+                >
+                  Login
+                </button>
+                <button
+                  type="button"
+                  href="#"
+                  class="btn btn-success ms-2 ms-sm-4 mt-4 mt-md-0"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signupModal"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!--Register Modal-->
+      <div
+        class="modal fade"
+        id="signupModal"
+        tabindex="-1"
+        aria-labelledby="signupModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-4">
+            <div class="modal-header">
+              <h2 class="modal-title" id="signupModalLabel">
+                Register a new account
+              </h2>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body bg-light-blue p-5 rounded-3">
+              <!-- Sign-up form content -->
+              <form>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    placeholder="Enter your username"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Only stud.noroff.no"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Must be 6 characters or more"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="avatar" class="form-label">Avatar</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="avatar"
+                    placeholder="https://url.com/image.jpg"
+                  />
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-success">
+                    Register
+                  </button>
+                </div>
+                <div class="text-center mt-3">
+                  <p>
+                    or
+                    <a href="#" class="text-decoration-none text-success"
+                      >Log in</a
+                    >
+                    if you already have an account
+                  </p>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="bg-light-blue py-4">
+        <div class="container">
+          <h2 class="text-center text-black">
+            New user?
+            <a
+              href="#"
+              class="signup-link"
+              data-bs-toggle="modal"
+              data-bs-target="#signupModal"
+              >Sign up</a
+            >
+            and receive 1000 credits for free.
+          </h2>
+        </div>
+      </section>
+      <h1 class="text-center my-5">Item Title</h1>
+      <a href="/index.html">
+        <h1 class="text-center my-5">Tilbake til hovedside</h1>
+      </a>
+      <a href="/profile/index.html">
+        <h1 class="text-center my-5">Tilbake til profilside</h1>
+      </a>
+
+      <div class="container bg-info rounded-2 border border-dark my-5">
+        <div class="row p-4 rounded-3 justify-content-center g-4">
+          <div class="col-lg-5 d-flex flex-column p-4 me-lg-4">
+            <!-- Stor bilde Div -->
+            <div class="mb-4 d-flex align-items-center justify-content-center">
+              <img
+                src="/images/eksempelbilde2-min.png"
+                alt="Large Image"
+                class="img-fluid rounded"
+              />
+            </div>
+
+            <!-- Tre mindre bilder Div -->
+            <div
+              class="d-flex flex-column flex-sm-row justify-content-start align-items-center"
+            >
+              <div class="p-2 col-12 col-sm-4">
+                <img
+                  src="/images/eksempelbilde2-min.png"
+                  alt="Small Image 1"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="p-2 col-12 col-sm-4">
+                <img
+                  src="/images/eksempelbilde2-min.png"
+                  alt="Small Image 2"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="p-2 col-12 col-sm-4">
+                <img
+                  src="/images/eksempelbilde2-min.png"
+                  alt="Small Image 3"
+                  class="img-fluid rounded"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 d-flex flex-column p-4 me-lg-4">
+            <h4>Description:</h4>
+            <p>
+              This is a description of the item at sale. The item is a digital
+              art painting and is quite the sale.
+            </p>
+
+            <div class="d-flex justify-content-between my-3">
+              <span>Ends at:</span>
+              <span>12.12.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center my-3">
+              <span>Time remaining:</span>
+              <span class="text-danger fw-bold">5d 0h 38min 9sec</span>
+            </div>
+
+            <div class="my-3">
+              <label for="bidInput" class="form-label">Make an offer</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bidInput"
+                  placeholder="Add your credit bid here"
+                />
+                <button class="btn btn-success">Bid</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="divider divider-1 my-4"></figure>
+
+      <div class="container d-flex justify-content-center my-5">
+        <div
+          class="col-12 col-md-6 bg-light-blue p-4 rounded-3 border border-dark"
+        >
+          <h3 class="text-center mb-3">Bid History</h3>
+          <p class="text-center">Highest Bid: 200</p>
+
+          <div class="d-flex justify-content-around border-bottom pb-2 mb-2">
+            <span class="fw-bold">Bidder</span>
+            <span class="fw-bold">Amount</span>
+          </div>
+
+          <div class="d-flex justify-content-around">
+            <span>Testuser1263</span>
+            <span>200</span>
+          </div>
+        </div>
+      </div>
+
+      <footer
+        class="footer bg-dark d-flex justify-content-center align-items-center flex-column"
+      >
+        <div class="d-flex justify-content-center p-3">
+          <img src="/images/logo.png" alt="AuctionHouse logo" />
+        </div>
+        <div class="text-center pb-3">
+          <span class="copyright text-white">© 2024 Stian Lilleng</span>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>

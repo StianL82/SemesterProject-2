@@ -9,17 +9,17 @@
     />
     <title>Profile Page | AuctionHouse</title>
     <link rel="stylesheet" href="/dist/css/index.css" />
-    <script type="module" src="./js/index.mjs"></script>
+    <script type="module" src="/js/index.mjs"></script>
     <link rel="icon" href="/images/logo.png" />
   </head>
-  <body>
+  <body class="bg-light FixedNav">
     <header>
       <nav class="navbar fixed-top navbar-expand-md bg-dark">
         <div class="container">
           <div class="brand-logo">
             <a class="navbar-brand" href="#">
               <img
-                src="./images/logo.png"
+                src="/images/logo.png"
                 alt="Logo"
                 width="100"
                 height="100"
@@ -59,5 +59,179 @@
         </div>
       </nav>
     </header>
+    <main>
+      <h1 class="text-center my-5">Profile</h1>
+      <a href="/index.html">
+        <h1 class="text-center my-5">Tilbake til hovedside</h1>
+      </a>
+      <a href="/Listing/index.html">
+        <h1 class="text-center my-5">Til single listing side</h1>
+      </a>
+
+      <div class="container bg-info rounded-2 border border-dark my-5">
+        <div class="row p-4 rounded-3 justify-content-center g-4">
+          <!-- justify-content-center for sentrering -->
+          <!-- Profile Information -->
+          <div
+            class="col-lg-5 d-flex flex-column bg-light-blue p-4 rounded-3 me-lg-4 border border-dark"
+          >
+            <!-- Legger til margin-end her -->
+            <div class="row flex-lg-row flex-column">
+              <!-- Avatar Div -->
+              <h3 class="text-center mb-3">Profile Information</h3>
+              <div
+                class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0"
+              >
+                <img
+                  src="/images/profile_avatar_example.png"
+                  alt="Avatar"
+                  class="rounded-circle avatar-img"
+                />
+              </div>
+
+              <!-- Profile Information Div -->
+              <div
+                class="col-lg-8 d-flex flex-column justify-content-center align-items-center"
+              >
+                <div class="text-center">
+                  <p>Your Credits: 1000</p>
+                  <p>Username: StianL5</p>
+                  <p>E-mail: test@noroff.no</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Change Avatar -->
+          <div
+            class="col-lg-5 d-flex flex-column justify-content-center align-items-center bg-light p-4 rounded-3 ms-lg-4 border border-dark"
+          >
+            <!-- Legger til margin-start her -->
+            <h2 class="text-center mb-4">Change Avatar</h2>
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="(https://url.com/image.jpg)"
+            />
+            <button type="button" class="btn btn-primary">Update Avatar</button>
+          </div>
+        </div>
+      </div>
+
+      <figure class="divider divider-1 my-4"></figure>
+
+      <h3 class="text-center">Do you want to add a new listing?</h3>
+
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary my-4">
+          Add new listing
+        </button>
+      </div>
+
+      <h3 class="text-center">My Listings</h3>
+
+      <div id="postsList">
+        <div class="Card-grid container rounded-2">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card my-3 border border-dark">
+                <div class="card-header bg-light-blue text-center">
+                  <h5 class="card-title mb-0">My Digital Art</h5>
+                </div>
+                <img
+                  src="/images/eksempelbilde3.png"
+                  class="card-img-top"
+                  alt="My Digital Art"
+                />
+                <div
+                  class="card-img-overlay d-flex flex-column justify-content-center"
+                >
+                  <div
+                    class="bg-white p-2 shadow-sm"
+                    style="width: fit-content"
+                  >
+                    <p class="mb-0"><strong>Expires:</strong></p>
+                    <p class="mb-0">12.12.2024</p>
+                  </div>
+                </div>
+                <div class="card-footer bg-info text-center">
+                  <a href="#" class="btn btn-link">View the listing</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card my-3 border border-dark">
+                <div class="card-header bg-light-blue text-center">
+                  <h5 class="card-title mb-0">My Digital Art</h5>
+                </div>
+                <img
+                  src="/images/eksempelbilde3.png"
+                  class="card-img-top"
+                  alt="My Digital Art"
+                />
+                <div
+                  class="card-img-overlay d-flex flex-column justify-content-center"
+                >
+                  <div
+                    class="bg-white p-2 shadow-sm"
+                    style="width: fit-content"
+                  >
+                    <p class="mb-0"><strong>Expires:</strong></p>
+                    <p class="mb-0">12.12.2024</p>
+                  </div>
+                </div>
+                <div class="card-footer bg-info text-center">
+                  <a href="#" class="btn btn-link">View the listing</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card custom-card my-3 border border-dark">
+                <div class="card-header bg-light-blue text-center">
+                  <h5 class="card-title mb-0">My Digital Art</h5>
+                </div>
+                <img
+                  src="/images/eksempelbilde3.png"
+                  class="card-img-top"
+                  alt="My Digital Art"
+                />
+                <div
+                  class="card-img-overlay d-flex flex-column justify-content-center"
+                >
+                  <div
+                    class="bg-white p-2 shadow-sm"
+                    style="width: fit-content"
+                  >
+                    <p class="mb-0"><strong>Expires:</strong></p>
+                    <p class="mb-0">12.12.2024</p>
+                  </div>
+                </div>
+                <div class="card-footer bg-info text-center">
+                  <a href="#" class="btn btn-link">View the listing</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <figure class="divider divider-1 my-4"></figure>
+
+        <h3 class="text-center mb-4">Your Bids</h3>
+        <p class="text-center mb-4">You have no active bids</p>
+
+
+      <footer
+        class="footer bg-dark d-flex justify-content-center align-items-center flex-column"
+      >
+        <div class="d-flex justify-content-center p-3">
+          <img src="/images/logo.png" alt="AuctionHouse logo" />
+        </div>
+        <div class="text-center pb-3">
+          <span class="copyright text-white">© 2024 Stian Lilleng</span>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
