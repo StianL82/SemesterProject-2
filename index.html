@@ -43,7 +43,10 @@
               <div class="nav-item dropdown py-3 d-flex justify-content-center">
                 <button
                   type="button"
+                  href="#"
                   class="btn btn-warning me-2 me-sm-4 mt-4 mt-md-0"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
                 >
                   Login
                 </button>
@@ -87,6 +90,73 @@
         </div>
       </section>
 
+      <!--Login Modal-->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-4">
+            <div class="modal-header justify-content-center">
+              <h2 class="modal-title" id="loginModalLabel">Login</h2>
+              <button
+                type="button"
+                class="btn-close position-absolute end-0 me-4"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body bg-light-blue p-5 rounded-3">
+              <!-- Login form content -->
+              <form>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Only stud.noroff.no"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Must be 6 characters or more"
+                  />
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-warning">Login</button>
+                </div>
+                <div class="text-center mt-3">
+                  <p>
+                    or
+                    <a href="#" class="text-decoration-none text-success"
+                      >register</a
+                    >
+                    if you don't have an account
+                  </p>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!--Register Modal-->
       <div
         class="modal fade"
@@ -97,13 +167,13 @@
       >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content p-4">
-            <div class="modal-header">
+            <div class="modal-header justify-content-center">
               <h2 class="modal-title" id="signupModalLabel">
                 Register a new account
               </h2>
               <button
                 type="button"
-                class="btn-close"
+                class="btn-close position-absolute end-0 me-4"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -444,7 +514,14 @@
         Please log in or register a new account to add a new listing
       </h3>
       <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-warning my-2">Login</button>
+        <button
+          type="button"
+          class="btn btn-warning my-2"
+          data-bs-toggle="modal"
+          data-bs-target="#loginModal"
+        >
+          Login
+        </button>
       </div>
 
       <figure class="divider divider-1 my-4"></figure>
