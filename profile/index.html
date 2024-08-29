@@ -39,25 +39,35 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="ms-auto">
-              <div class="nav-item dropdown py-3 d-flex justify-content-center">
+            <div class="ms-auto d-flex flex-column flex-md-row align-items-center">
+              <div class="nav-item pt-4 pt-md-2 d-flex flex-column align-items-center justify-content-center">
+                <a
+                  class="profile-link"
+                  href="#"
+                  role="button"
+                  aria-expanded="false"
+                >
+                  <img
+                    class="userAvatar rounded-circle mb-2"
+                    src="/images/navAvatar.png"
+                    alt="The profile image of the logged in user"
+                  />
+                </a>
+                <span class="text-white">1000 Credits</span>
+              </div>
+              <div class="nav-item py-4 py-md-2">
                 <button
                   type="button"
-                  class="btn btn-warning me-2 me-sm-4 mt-4 mt-md-0"
+                  class="btn btn-danger mt-3 mt-md-0 ms-0 ms-md-3"
                 >
-                  Login
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-success ms-2 ms-sm-4 mt-4 mt-md-0"
-                >
-                  Register
+                  Log Out
                 </button>
               </div>
             </div>
           </div>
         </div>
       </nav>
+      
     </header>
     <main>
       <h1 class="text-center my-5">Profile</h1>
