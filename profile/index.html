@@ -3,7 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="This is your profile page on AuctionHouse. View your Listings and bids, view your profile data or change your avatar picture."
+    />
     <title>Profile Page | AuctionHouse</title>
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script type="module" src="./js/index.mjs"></script>
+    <link rel="icon" href="/images/logo.png" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <nav class="navbar fixed-top navbar-expand-md bg-dark">
+        <div class="container">
+          <div class="brand-logo">
+            <a class="navbar-brand" href="#">
+              <img
+                src="./images/logo.png"
+                alt="Logo"
+                width="100"
+                height="100"
+                class="d-inline-block align-text-top"
+              />
+            </a>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="ms-auto">
+              <div class="nav-item dropdown py-3 d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-warning me-2 me-sm-4 mt-4 mt-md-0"
+                >
+                  Login
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success ms-2 ms-sm-4 mt-4 mt-md-0"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </body>
 </html>
