@@ -1,3 +1,28 @@
+/*---------- Typography ----------*/
+
+h1 {
+  font-family: Cinzel, Arial, Helvetica, sans-serif;
+  font-size: clamp(1.6rem, 5vw, 3rem); 
+}
+
+h2 {
+  font-family: Quicksand, Arial, Helvetica, sans-serif;
+  font-size: clamp(30px, 4vw, 38px);
+}
+
+h3, p, span {
+  font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+  font-size: clamp(20px, 3vw, 28px);
+}
+
+h4, p, span {
+  font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+}
+
+
+/*---------- Show/Hide ----------*/
+
 .signUpAdd{
   margin-top: -17px;
 }
