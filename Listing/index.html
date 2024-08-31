@@ -17,7 +17,7 @@
       <nav class="navbar fixed-top navbar-expand-md bg-dark">
         <div class="container">
           <div class="brand-logo">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.html">
               <img
                 src="/images/logo.png"
                 alt="Logo"
@@ -39,7 +39,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="ms-auto">
+            <div class="hideIfLoggedIn ms-auto">
               <div class="nav-item dropdown py-3 d-flex justify-content-center">
                 <button
                   type="button"
@@ -61,10 +61,40 @@
                 </button>
               </div>
             </div>
+            <div
+              class="showIfLoggedIn ms-auto d-flex flex-column flex-md-row align-items-center"
+            >
+              <div
+                class="nav-item pt-4 pt-md-2 d-flex flex-column align-items-center justify-content-center"
+              >
+                <a
+                  class="profile-link"
+                  href="/profile/index.html"
+                  role="button"
+                  aria-expanded="false"
+                >
+                  <img
+                    class="userAvatar rounded-circle mb-2"
+                    src="/images/navAvatar.png"
+                    alt="The profile image of the logged in user"
+                  />
+                </a>
+                <span class="text-white">1000 Credits</span>
+              </div>
+              <div class="nav-item py-4 py-md-2">
+                <button
+                  type="button"
+                  class="btn btn-danger mt-3 mt-md-0 ms-0 ms-md-3"
+                >
+                  Log Out
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
     </header>
+
     <main>
       <!--Login Modal-->
       <div
@@ -222,7 +252,7 @@
         </div>
       </div>
 
-      <section class="bg-light-blue py-4">
+      <section class="signUpAdd hideIfLoggedIn bg-light-blue py-4">
         <div class="container">
           <h2 class="text-center text-black">
             New user?
@@ -237,7 +267,14 @@
           </h2>
         </div>
       </section>
-      <h1 class="text-center my-5">Item Title</h1>
+
+      <div class="container mt">
+        <a href="#" class="backLink" onclick="window.history.back();"
+          ><p>Back to previous page</p></a
+        >
+      </div>
+
+      <h1 class="itemTitle text-center my-5">Item Title</h1>
       <a href="/index.html">
         <h1 class="text-center my-5">Tilbake til hovedside</h1>
       </a>
@@ -302,7 +339,21 @@
               <span class="text-danger fw-bold">5d 0h 38min 9sec</span>
             </div>
 
-            <div class="my-3">
+            <div class="hideIfLoggedIn mt-3">
+              <h3 class="text-center text-black">
+                Please
+                <a
+                  href="#"
+                  class="signup-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signupModal"
+                  >log in</a
+                >
+                to make an offer.
+              </h3>
+            </div>
+
+            <div class="showIfLoggedIn my-3">
               <label for="bidInput" class="form-label">Make an offer</label>
               <div class="input-group">
                 <input
@@ -318,9 +369,9 @@
         </div>
       </div>
 
-      <figure class="divider divider-1 my-4"></figure>
+      <figure class="showIfLoggedIn divider divider-1 my-4"></figure>
 
-      <div class="container d-flex justify-content-center my-5">
+      <div class="showIfLoggedIn container d-flex justify-content-center my-5">
         <div
           class="col-12 col-md-6 bg-light-blue p-4 rounded-3 border border-dark"
         >

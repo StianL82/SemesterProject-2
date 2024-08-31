@@ -14,12 +14,13 @@
   </head>
   <body class="bg-light forFixedNav">
     <header>
+      <!--Nav-->
       <nav class="navbar fixed-top navbar-expand-md bg-dark">
         <div class="container">
           <div class="brand-logo">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.html">
               <img
-                src="./images/logo.png"
+                src="/images/logo.png"
                 alt="Logo"
                 width="100"
                 height="100"
@@ -39,7 +40,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="ms-auto">
+            <div class="hideIfLoggedIn ms-auto">
               <div class="nav-item dropdown py-3 d-flex justify-content-center">
                 <button
                   type="button"
@@ -61,11 +62,41 @@
                 </button>
               </div>
             </div>
+            <div
+              class="showIfLoggedIn ms-auto d-flex flex-column flex-md-row align-items-center"
+            >
+              <div
+                class="nav-item pt-4 pt-md-2 d-flex flex-column align-items-center justify-content-center"
+              >
+                <a
+                  class="profile-link"
+                  href="/profile/index.html"
+                  role="button"
+                  aria-expanded="false"
+                >
+                  <img
+                    class="userAvatar rounded-circle mb-2"
+                    src="/images/navAvatar.png"
+                    alt="The profile image of the logged in user"
+                  />
+                </a>
+                <span class="text-white">1000 Credits</span>
+              </div>
+              <div class="nav-item py-4 py-md-2">
+                <button
+                  type="button"
+                  class="btn btn-danger mt-3 mt-md-0 ms-0 ms-md-3"
+                >
+                  Log Out
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
     </header>
     <main>
+      <!--Hero Image-->
       <section
         class="hero d-flex align-items-center justify-content-center text-center"
       >
@@ -74,7 +105,8 @@
         </div>
       </section>
 
-      <section class="bg-light-blue py-4">
+      <!--Signup Add-->
+      <section class="hideIfLoggedIn bg-light-blue py-4">
         <div class="container">
           <h2 class="text-center text-black">
             New user?
@@ -255,8 +287,8 @@
         <h1 class="text-center my-5">Til single listing side</h1>
       </a>
 
+      <!-- Karusell i en container -->
       <div class="container my-4">
-        <!-- Karusell i en container -->
         <div
           id="carouselExampleIndicators"
           class="carousel slide"
@@ -275,7 +307,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -290,7 +322,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -305,7 +337,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -320,7 +352,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -341,7 +373,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -356,7 +388,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -371,7 +403,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -386,7 +418,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -407,7 +439,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -422,7 +454,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -437,7 +469,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -452,7 +484,7 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div class="card-body">
+                    <div class="card-body bg-light-blue">
                       <p class="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -510,18 +542,36 @@
         </div>
       </div>
 
-      <h3 class="text-center m-4">
-        Please log in or register a new account to add a new listing
-      </h3>
-      <div class="d-flex justify-content-center">
-        <button
-          type="button"
-          class="btn btn-warning my-2"
-          data-bs-toggle="modal"
-          data-bs-target="#loginModal"
-        >
-          Login
-        </button>
+      <div class="hideIfLoggedIn">
+        <h3 class="text-center m-4">
+          Please log in or register a new account to add a new listing
+        </h3>
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-warning my-2"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+
+      <div class="showIfLoggedIn">
+        <h3 class="text-center m-4">
+          Do you want to add a new listing?
+        </h3>
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-primary my-2"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            Add new listing
+          </button>
+        </div>
       </div>
 
       <figure class="divider divider-1 my-4"></figure>
