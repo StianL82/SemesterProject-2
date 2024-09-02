@@ -28,9 +28,9 @@ h4, p, span {
 }
 
 .hideIfLoggedIn{
-  display: none;
+  display: block;
 }
 
-/* .showIfLoggedIn{
+.showIfLoggedIn{
   display: none !important;
-} */
+}
