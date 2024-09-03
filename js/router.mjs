@@ -1,4 +1,6 @@
 import * as handlers from "./handlers/index.mjs";
+import * as templates from "./templates/index.mjs";
+import { getListings } from "./api/listings/getListings.mjs";
 
 const path = location.pathname;
 
@@ -12,6 +14,8 @@ export function router() {
       handlers.setLoginFormListener();
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
+      templates.displayListings();
+      getListings();
       break;
     //Listing Page
     case "/listing":
@@ -22,6 +26,7 @@ export function router() {
       handlers.setLoginFormListener();
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
+      templates.initListingPage();
       break;
     //Profile Page
     case "/profile":

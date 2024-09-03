@@ -316,47 +316,29 @@
 
             <!-- Tre mindre bilder Div -->
             <div
-              class="d-flex flex-column flex-sm-row justify-content-start align-items-center"
+              class="extraImageContainer d-flex flex-column flex-sm-row justify-content-start align-items-center"
             >
-              <div class="p-2 col-12 col-sm-4">
-                <img
-                  src="/images/eksempelbilde2-min.png"
-                  alt="Small Image 1"
-                  class="img-fluid rounded"
-                />
-              </div>
-              <div class="p-2 col-12 col-sm-4">
-                <img
-                  src="/images/eksempelbilde2-min.png"
-                  alt="Small Image 2"
-                  class="img-fluid rounded"
-                />
-              </div>
-              <div class="p-2 col-12 col-sm-4">
-                <img
-                  src="/images/eksempelbilde2-min.png"
-                  alt="Small Image 3"
-                  class="img-fluid rounded"
-                />
-              </div>
+              <!-- Dynamisk genererte bilder vil legges til her -->
             </div>
           </div>
 
           <div class="col-lg-5 d-flex flex-column p-4 me-lg-4">
-            <h4>Description:</h4>
-            <p>
-              This is a description of the item at sale. The item is a digital
-              art painting and is quite the sale.
-            </p>
+            <h2>Item Description:</h2>
+            <p class="itemDescription"></p>
 
             <div class="d-flex justify-content-between my-3">
-              <span>Ends at:</span>
-              <span>12.12.2024</span>
+              <h3>Ends at:</h3>
+              <span class="expires"></span>
             </div>
 
             <div class="d-flex justify-content-between align-items-center my-3">
-              <span>Time remaining:</span>
+              <h3>Time remaining:</h3>
               <span class="text-danger fw-bold">5d 0h 38min 9sec</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center my-3">
+              <h3>Seller:</h3>
+              <p class="seller"></p>
             </div>
 
             <div class="hideIfLoggedIn hidden-until-js mt-3">
@@ -374,7 +356,9 @@
             </div>
 
             <div class="showIfLoggedInBlock hidden-until-js my-3">
-              <label for="bidInput" class="form-label">Make an offer</label>
+              <label for="bidInput" class="form-label makeoffer"
+                >Make an offer</label
+              >
               <div class="input-group">
                 <input
                   type="text"
@@ -400,16 +384,15 @@
           class="col-12 col-md-6 bg-light-blue p-4 rounded-3 border border-dark"
         >
           <h3 class="text-center mb-3">Bid History</h3>
-          <p class="text-center">Highest Bid: 200</p>
+          <p class="text-center"><span class="BidNumber"></span></p>
 
           <div class="d-flex justify-content-around border-bottom pb-2 mb-2">
             <span class="fw-bold">Bidder</span>
             <span class="fw-bold">Amount</span>
           </div>
 
-          <div class="d-flex justify-content-around">
-            <span>Testuser1263</span>
-            <span>200</span>
+          <div class="bidHistoryContainer">
+            <!-- Dynamisk genererte budelementer vil legges til her -->
           </div>
         </div>
       </div>
