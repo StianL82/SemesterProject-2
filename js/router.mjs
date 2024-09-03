@@ -14,10 +14,10 @@ export function router() {
       handlers.checkLoginStatus();
       break;
     //Listing Page
-    case "/Listing":
-    case "/Listing/":
-    case "/Listing/index":
-    case "/Listing/index.html":
+    case "/listing":
+    case "/listing/":
+    case "/listing/index":
+    case "/listing/index.html":
       handlers.setRegisterFormListener();
       handlers.setLoginFormListener();
       handlers.setupLogoutButton();
