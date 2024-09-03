@@ -39,7 +39,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="hideIfLoggedIn ms-auto">
+            <div class="hideIfLoggedIn hidden-until-js ms-auto">
               <div class="nav-item dropdown py-3 d-flex justify-content-center">
                 <button
                   type="button"
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div
-              class="showIfLoggedInFlex ms-auto d-flex flex-column flex-md-row align-items-center"
+              class="showIfLoggedInFlex hidden-until-js ms-auto d-flex flex-column flex-md-row align-items-center"
             >
               <div
                 class="nav-item pt-4 pt-md-2 d-flex flex-column align-items-center justify-content-center"
@@ -276,7 +276,9 @@
         </div>
       </div>
 
-      <section class="signUpAdd hideIfLoggedIn bg-light-blue py-4">
+      <section
+        class="signUpAdd hideIfLoggedIn hidden-until-js bg-light-blue py-4"
+      >
         <div class="container">
           <h2 class="text-center text-black">
             New user?
@@ -357,7 +359,7 @@
               <span class="text-danger fw-bold">5d 0h 38min 9sec</span>
             </div>
 
-            <div class="hideIfLoggedIn mt-3">
+            <div class="hideIfLoggedIn hidden-until-js mt-3">
               <h3 class="text-center text-black">
                 Please
                 <a
@@ -371,7 +373,7 @@
               </h3>
             </div>
 
-            <div class="showIfLoggedInBlock my-3">
+            <div class="showIfLoggedInBlock hidden-until-js my-3">
               <label for="bidInput" class="form-label">Make an offer</label>
               <div class="input-group">
                 <input
@@ -387,10 +389,12 @@
         </div>
       </div>
 
-      <figure class="showIfLoggedInFlex divider divider-1 my-4"></figure>
+      <figure
+        class="showIfLoggedInFlex hidden-until-js divider divider-1 my-4"
+      ></figure>
 
       <div
-        class="showIfLoggedInFlex container d-flex justify-content-center my-5"
+        class="showIfLoggedInFlex hidden-until-js container d-flex justify-content-center my-5"
       >
         <div
           class="col-12 col-md-6 bg-light-blue p-4 rounded-3 border border-dark"

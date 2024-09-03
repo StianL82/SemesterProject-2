@@ -34,3 +34,7 @@ h4, p, span {
 .showIfLoggedIn{
   display: none !important;
 }
+
+.hidden-until-js {
+  display: none !important;
+}
