@@ -4,7 +4,6 @@ export function checkLoginStatus() {
   const token = storage.load("token");
 
   if (token) {
-    // Brukeren er logget inn
     document.querySelectorAll(".hideIfLoggedIn").forEach((el) => {
       el.style.setProperty("display", "none", "important");
     });
@@ -15,7 +14,6 @@ export function checkLoginStatus() {
       el.style.setProperty("display", "flex", "important");
     });
   } else {
-    // Brukeren er ikke logget inn
     document.querySelectorAll(".hideIfLoggedIn").forEach((el) => {
       el.style.setProperty("display", "block", "important");
     });

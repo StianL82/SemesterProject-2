@@ -19,13 +19,10 @@ export async function login(profile) {
 
     if (response.ok) {
       const responseData = await response.json();
-      console.log("Full response data:", responseData);
 
-      // Ekstraher data fra responsen korrekt
       const { accessToken, ...user } = responseData.data || {};
 
       if (accessToken) {
-        console.log("Login successful, saving token and profile.");
         storage.save("token", accessToken);
         storage.save("profile", user);
         window.location.href = "/index.html";

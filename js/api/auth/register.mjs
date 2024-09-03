@@ -1,4 +1,5 @@
 import * as storage from "../../storage/index.mjs";
+import * as components from "../../components/index.mjs";
 import { API_HOST_URL } from "../constants.mjs";
 
 const action = "/auth/register";
@@ -19,12 +20,30 @@ export async function register(profile) {
 
     if (response.ok) {
       const userData = await response.json();
-      storage.save("profile", userData);
+      const user = userData.data;
 
-      sessionStorage.setItem("userEmail", userData.email);
+      storage.save("profile", user);
+      sessionStorage.setItem("userEmail", user.email);
 
       alert("Registration successful! Please log in to continue.");
-      window.location.href = "../../../profile/login/";
+
+      const signupModal = bootstrap.Modal.getInstance(
+        document.getElementById("signupModal")
+      );
+      if (signupModal) {
+        signupModal.hide();
+      }
+
+      const form = document.querySelector("#signupModal form");
+      if (form) {
+        form.reset();
+      }
+
+      const loginModalElement = document.getElementById("loginModal");
+      const loginModal = bootstrap.Modal.getOrCreateInstance(loginModalElement);
+      loginModal.show();
+
+      components.hydrateEmailField();
     } else {
       const errorMessage = await response.text();
       if (response.status >= 400 && response.status < 500) {
