@@ -15,6 +15,7 @@ export function router() {
       break;
     //Listing Page
     case "/Listing":
+    case "/Listing/":
     case "/Listing/index":
     case "/Listing/index.html":
       handlers.setRegisterFormListener();
@@ -22,8 +23,9 @@ export function router() {
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
       break;
-    //Listing Page
+    //Profile Page
     case "/profile":
+    case "/profile/":
     case "/profile/index":
     case "/profile/index.html":
       handlers.setupLogoutButton();
