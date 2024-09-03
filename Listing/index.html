@@ -117,23 +117,28 @@
             </div>
             <div class="modal-body bg-light-blue p-5 rounded-3">
               <!-- Login form content -->
-              <form>
+              <form id="loginForm">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="mb-2">Email:</label>
                   <input
                     type="email"
-                    class="form-control"
+                    class="form-control mb-4"
                     id="email"
-                    placeholder="Only stud.noroff.no"
+                    name="email"
+                    title="Only @stud.noroff.no domains are allowed."
+                    required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
+                  <label for="password" class="mb-2">Password:</label>
                   <input
                     type="password"
-                    class="form-control"
+                    class="form-control mb-4"
                     id="password"
-                    placeholder="Must be 6 characters or more"
+                    name="password"
+                    title="Must be 6 characters or more."
+                    minlength="8"
+                    required
                   />
                 </div>
                 <div class="d-grid gap-2">
