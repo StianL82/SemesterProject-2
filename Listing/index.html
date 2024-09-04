@@ -368,6 +368,51 @@
                 />
                 <button class="btn-bid btn btn-success">Bid</button>
               </div>
+
+              <div
+                class="modal fade"
+                id="bidConfirmationModal"
+                tabindex="-1"
+                aria-labelledby="bidConfirmationModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                      <h2 class="modal-title" id="loginModalLabel">
+                        Confirm Bid
+                      </h2>
+                      <button
+                        type="button"
+                        class="btn-close position-absolute end-0 me-4"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body text-start">
+                      <!-- Venstrestill modal body tekst -->
+                      <!-- Modal body text set dynamically in JavaScript -->
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <!-- Midtstill knapper -->
+                      <button
+                        type="button"
+                        class="btn btn-danger mx-2"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <!-- Bruk btn-danger for Cancel -->
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-confirm mx-2"
+                      >
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
