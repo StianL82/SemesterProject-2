@@ -33,10 +33,14 @@ function updatePageWithListingData(listing) {
   descriptionElement.textContent = listing.description;
 
   // Oppdater hovedbildet
-  const mainImage = document.querySelector("img[alt='Large Image']");
+  const mainImage = document.querySelector(".main-listing-image"); // Bruk en stabil klasse for å finne bildet
   if (listing.media && listing.media.length > 0) {
     mainImage.src = listing.media[0].url;
-    mainImage.alt = listing.media[0].alt || listing.title;
+    mainImage.alt = listing.media[0].alt || `Listing image of ${listing.title}`; // Sett alt-teksten dynamisk
+  } else {
+    mainImage.src =
+      "https://plus.unsplash.com/premium_photo-1667539633338-5b7afd626193?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // Hvis det ikke er noe media, bruk et eksempelbilde
+    mainImage.alt = "Placeholder image for the listing";
   }
 
   // Oppdater ekstra bilder

@@ -3,21 +3,15 @@ import { authFetch } from "../authFetch.mjs";
 
 const action = "/listings";
 
-export async function getListings() {
+// Funksjon for å hente en spesifikk side med et spesifikt antall listings
+export async function getListings(limit = 20, page = 1) {
   try {
-    const getListingsURL = `${API_AUCTION_URL}${action}?_seller=true&_bids=true`;
-
-    // Logg URL-en for å sjekke om den er riktig
-    console.log("Fetching listings from URL:", getListingsURL);
+    const getListingsURL = `${API_AUCTION_URL}${action}?_seller=true&_bids=true&limit=${limit}&page=${page}`;
 
     const response = await authFetch(getListingsURL);
 
-    // Logg statuskoden for å se om forespørselen var vellykket
-    console.log("Response status:", response.status);
-
     const data = await response.json();
 
-    // Logg dataen for å se hva som blir returnert
     console.log("Listings data received:", data);
 
     return data;
