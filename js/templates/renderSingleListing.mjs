@@ -1,6 +1,8 @@
 import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs"; // Importer den nye funksjonen
+import { enableImageModal } from "/js/components/openImageModal.mjs"; // Importer den nye funksjonen
+
 
 // Funksjon for å sende bud
 async function placeBid(listingId, bidAmount) {
@@ -78,6 +80,35 @@ function updatePageWithListingData(listing) {
       "https://plus.unsplash.com/premium_photo-1667539633338-5b7afd626193?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     mainImage.alt = "Placeholder image for the listing";
   }
+
+  // Oppdater ekstra bilder (legg tilbake denne delen)
+  const extraImageContainer = document.querySelector(".extraImageContainer");
+  extraImageContainer.innerHTML = ""; // Tøm containeren før du legger til nye elementer
+
+  if (listing.media && listing.media.length > 1) {
+    // Start fra index 1, fordi index 0 allerede er brukt som hovedbilde
+    for (let i = 1; i < listing.media.length && i <= 3; i++) {
+      const mediaItem = listing.media[i];
+
+      const extraImageDiv = document.createElement("div");
+      extraImageDiv.classList.add("p-2", "col-12", "col-sm-4");
+
+      const img = document.createElement("img");
+      img.src = mediaItem.url;
+      img.alt = mediaItem.alt || `Extra Image ${i}`;
+      img.classList.add("img-fluid", "rounded");
+
+      extraImageDiv.appendChild(img);
+      extraImageContainer.appendChild(extraImageDiv);
+    }
+  } else {
+    const noImagesMessage = document.createElement("p");
+    noImagesMessage.textContent = "No additional images available.";
+    extraImageContainer.appendChild(noImagesMessage);
+  }
+
+    // Aktiver bildeklikk for modal
+    enableImageModal(listing);
 
   // Finn høyeste bud
   let highestBid = 0;
