@@ -6,7 +6,11 @@ import { startCountdown } from "/js/components/expireCountdown.mjs";
 
 // Funksjon for å sende bud
 async function placeBid(listingId, bidAmount) {
-  const bidUrl = `${API_AUCTION_URL}/listings/${listingId}/bids`;
+  // Legg til en timestamp for å unngå caching-problemer
+  const bidUrl = `${API_AUCTION_URL}/listings/${listingId}/bids?timestamp=${new Date().getTime()}`;
+
+  console.log("Sending bid to URL:", bidUrl);
+  console.log("Bid amount:", bidAmount);
 
   try {
     const response = await authFetch(bidUrl, {
@@ -14,10 +18,12 @@ async function placeBid(listingId, bidAmount) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: bidAmount }),
+      body: JSON.stringify({ amount: bidAmount }), // Kontroller at riktig verdi sendes
     });
 
     if (!response.ok) {
+      const errorResponse = await response.json();
+      console.error("Server error response:", errorResponse);
       throw new Error("Failed to place bid. Make sure your bid is valid.");
     }
 
@@ -171,13 +177,12 @@ function updatePageWithListingData(listing) {
   }
 
   // Oppdater antall bud
-const numberOfBidsElement = document.querySelector(".BidNumber");
-if (listing._count && listing._count.bids >= 0) {
-  numberOfBidsElement.textContent = `Number of bids: ${listing._count.bids}`;
-} else {
-  numberOfBidsElement.textContent = "No bids yet.";
-}
-
+  const numberOfBidsElement = document.querySelector(".BidNumber");
+  if (listing._count && listing._count.bids >= 0) {
+    numberOfBidsElement.textContent = `Number of bids: ${listing._count.bids}`;
+  } else {
+    numberOfBidsElement.textContent = "No bids yet.";
+  }
 
   // Lytt etter budknappen
   const bidButton = document.querySelector(".btn-bid");
@@ -211,6 +216,7 @@ if (listing._count && listing._count.bids >= 0) {
         try {
           await placeBid(listing.id, bidAmount);
           alert("Your bid was placed successfully!");
+          bidInput.value = ""; // Tøm input-feltet
           location.reload();
         } catch (error) {
           alert("Failed to place bid. Please try again.");

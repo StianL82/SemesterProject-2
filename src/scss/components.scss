@@ -14,6 +14,11 @@
   justify-content: center;
 }
 
+.carousel-card{
+  border-radius: 10px;
+  border-color: black;
+}
+
 .carousel-control-prev {
   left: -60px; /* Flytt pilene til venstre for kortene */
 }
@@ -41,44 +46,69 @@
 }
 
 
-/*---------- Card ----------*/
+/*---------- Cards ----------*/
 
-.card {
+
+#listingCards .card {
   height: 380px;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
 }
 
-.card:hover {
+#listingCards .card:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.card-img-top {
-  height: 100%;
+#listingCards .card-img-top {
+  flex-shrink: 1;
+  height: 270px;
   width: 100%;
   object-fit: cover;
+  border-radius: 0;
+  border: none;
 }
 
-.card-img-overlay {
+#listingCards .card-header {
+  height: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#listingCards .card-title {
+  font-size: 1.1rem;
+  line-height: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#listingCards .card-img-overlay {
   position: absolute;
   left: -15px;
+  bottom: 0;
+  padding: 15px;
 }
 
-.card-footer span {
+#listingCards .card-footer span {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-.card-footer span:hover {
+#listingCards .card-footer span:hover {
   text-decoration: underline;
 }
 
-.card-footer {
+#listingCards .card-footer {
   margin-top: auto;
+  padding: 10px;
 }
+
 
 
 /*---------- Image Modal ----------*/
