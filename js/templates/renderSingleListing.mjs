@@ -1,8 +1,8 @@
 import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
-import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs"; // Importer den nye funksjonen
-import { enableImageModal } from "/js/components/openImageModal.mjs"; // Importer den nye funksjonen
-
+import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
+import { enableImageModal } from "/js/components/openImageModal.mjs";
+import { startCountdown } from "/js/components/expireCountdown.mjs";
 
 // Funksjon for å sende bud
 async function placeBid(listingId, bidAmount) {
@@ -59,7 +59,7 @@ function updatePageWithListingData(listing) {
   // Skjul budinput hvis brukeren er eieren
   const bidInputGroup = document.querySelector(".input-group");
   if (loggedInUser && loggedInUser.name === sellerName) {
-    bidInputGroup.style.display = "none"; // Skjul bud-feltet for eieren
+    bidInputGroup.style.display = "none";
   }
 
   // Oppdater tittel
@@ -83,7 +83,7 @@ function updatePageWithListingData(listing) {
 
   // Oppdater ekstra bilder (legg tilbake denne delen)
   const extraImageContainer = document.querySelector(".extraImageContainer");
-  extraImageContainer.innerHTML = ""; // Tøm containeren før du legger til nye elementer
+  extraImageContainer.innerHTML = "";
 
   if (listing.media && listing.media.length > 1) {
     // Start fra index 1, fordi index 0 allerede er brukt som hovedbilde
@@ -107,21 +107,44 @@ function updatePageWithListingData(listing) {
     extraImageContainer.appendChild(noImagesMessage);
   }
 
-    // Aktiver bildeklikk for modal
-    enableImageModal(listing);
+  // Aktiver bildeklikk for modal
+  enableImageModal(listing);
+
+  // Oppdater selgerens navn
+  const sellerElement = document.querySelector(".seller");
+  if (listing.seller && listing.seller.name) {
+    sellerElement.textContent = listing.seller.name;
+  } else {
+    sellerElement.textContent = "Unknown seller";
+  }
+
+  // Oppdater utløpsdato
+  const endsAtElement = document.querySelector(".expires");
+  if (listing.endsAt) {
+    const endsAtDate = new Date(listing.endsAt).toLocaleDateString("en-GB");
+    endsAtElement.textContent = endsAtDate;
+    startCountdown(listing.endsAt);
+  } else {
+    endsAtElement.textContent = "No expiration date";
+  }
+
+  // Start nedtellingen hvis `endsAt` eksisterer
+  if (listing.endsAt) {
+    startCountdown(listing.endsAt);
+  }
 
   // Finn høyeste bud
   let highestBid = 0;
-  let highestBidder = null; // Variabel for å lagre høyeste budgiver
+  let highestBidder = null;
   if (listing.bids && listing.bids.length > 0) {
-    highestBid = Math.max(...listing.bids.map((bid) => bid.amount)); // Finner høyeste bud
+    highestBid = Math.max(...listing.bids.map((bid) => bid.amount));
     highestBidder = listing.bids.find((bid) => bid.amount === highestBid)
-      ?.bidder.name; // Finn høyeste budgiver
+      ?.bidder.name;
   }
 
   // Oppdater budhistorikk
   const bidHistoryContainer = document.querySelector(".bidHistoryContainer");
-  bidHistoryContainer.innerHTML = ""; // Tøm containeren før du legger til nye elementer
+  bidHistoryContainer.innerHTML = "";
 
   if (listing.bids && listing.bids.length > 0) {
     listing.bids.forEach((bid) => {
@@ -147,6 +170,15 @@ function updatePageWithListingData(listing) {
     bidHistoryContainer.appendChild(noBidsMessage);
   }
 
+  // Oppdater antall bud
+const numberOfBidsElement = document.querySelector(".BidNumber");
+if (listing._count && listing._count.bids >= 0) {
+  numberOfBidsElement.textContent = `Number of bids: ${listing._count.bids}`;
+} else {
+  numberOfBidsElement.textContent = "No bids yet.";
+}
+
+
   // Lytt etter budknappen
   const bidButton = document.querySelector(".btn-bid");
   bidButton.addEventListener("click", async () => {
@@ -167,7 +199,6 @@ function updatePageWithListingData(listing) {
       const modalBody = modalElement.querySelector(".modal-body");
       modalBody.textContent = `You already have the highest bid of ${highestBid}. Do you still want to place a higher bid?`;
 
-      // Åpne modal
       const bootstrapModal = new bootstrap.Modal(modalElement);
       bootstrapModal.show();
 
@@ -180,13 +211,12 @@ function updatePageWithListingData(listing) {
         try {
           await placeBid(listing.id, bidAmount);
           alert("Your bid was placed successfully!");
-          location.reload(); // Oppdater siden etter suksess
+          location.reload();
         } catch (error) {
           alert("Failed to place bid. Please try again.");
         }
       });
 
-      // Hvis brukeren trykker "Cancel", gjør ingenting
       return;
     }
 
