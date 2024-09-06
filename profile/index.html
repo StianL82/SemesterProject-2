@@ -39,22 +39,16 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="ms-auto d-flex flex-column flex-md-row align-items-center">
-              <div class="nav-item pt-4 pt-md-2 d-flex flex-column align-items-center justify-content-center">
-                <a
-                  class="profile-link"
-                  href="/profile/index.html"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  <img
-                    class="userAvatar rounded-circle mb-2"
-                    src="/images/navAvatar.png"
-                    alt="The profile image of the logged in user"
-                  />
-                </a>
-                <span class="text-white">1000 Credits</span>
+            <div
+              class="ms-auto d-flex flex-column flex-md-row align-items-center"
+            >
+              <div
+                id="navProfileContainer"
+                class="d-flex flex-column align-items-center justify-content-center"
+              >
+                <!-- Dynamisk genererte avatar og kredittinformasjon vil legges til her -->
               </div>
+
               <div class="nav-item py-4 py-md-2">
                 <button
                   type="button"
@@ -67,7 +61,6 @@
           </div>
         </div>
       </nav>
-      
     </header>
     <main>
       <h1 class="text-center my-5">Profile</h1>
@@ -85,20 +78,20 @@
                 class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0"
               >
                 <img
+                  class="profile-avatar rounded-circle avatar-img"
                   src="/images/profile_avatar_example.png"
                   alt="Avatar"
-                  class="rounded-circle avatar-img"
                 />
               </div>
 
               <!-- Profile Information Div -->
               <div
-                class="col-lg-8 d-flex flex-column justify-content-center align-items-center"
+                class="col-lg-8 d-flex flex-column justify-content-center align-items-center profile-info"
               >
                 <div class="text-center">
-                  <p>Your Credits: 1000</p>
-                  <p>Username: StianL5</p>
-                  <p>E-mail: test@noroff.no</p>
+                  <p class="profile-credits">Your Credits: 1000</p>
+                  <p class="profile-username">Username: StianL5</p>
+                  <p class="profile-email">E-mail: test@noroff.no</p>
                 </div>
               </div>
             </div>
@@ -129,9 +122,17 @@
         </button>
       </div>
 
-      <h3 class="text-center">My Listings</h3>
+<!-- Section for My Listings -->
+<h3 class="text-center">My Listings</h3>
+<div id="myListings">
+  <div class="Card-grid container rounded-2">
+    <!-- Oppdater id til en unik verdi for My Listings -->
+    <div id="my-listings-container" class="row"></div>
+  </div>
+</div>
 
-      <div id="postsList">
+
+      <!--       <div id="postsList">
         <div class="Card-grid container rounded-2">
           <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
@@ -160,68 +161,22 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card my-3 border border-dark">
-                <div class="card-header bg-light-blue text-center">
-                  <h5 class="card-title mb-0">My Digital Art</h5>
-                </div>
-                <img
-                  src="/images/eksempelbilde3.png"
-                  class="card-img-top"
-                  alt="My Digital Art"
-                />
-                <div
-                  class="card-img-overlay d-flex flex-column justify-content-center"
-                >
-                  <div
-                    class="bg-white p-2 shadow-sm"
-                    style="width: fit-content"
-                  >
-                    <p class="mb-0"><strong>Expires:</strong></p>
-                    <p class="mb-0">12.12.2024</p>
-                  </div>
-                </div>
-                <div class="card-footer bg-info text-center">
-                  <a href="#" class="btn btn-link">View the listing</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card custom-card my-3 border border-dark">
-                <div class="card-header bg-light-blue text-center">
-                  <h5 class="card-title mb-0">My Digital Art</h5>
-                </div>
-                <img
-                  src="/images/eksempelbilde3.png"
-                  class="card-img-top"
-                  alt="My Digital Art"
-                />
-                <div
-                  class="card-img-overlay d-flex flex-column justify-content-center"
-                >
-                  <div
-                    class="bg-white p-2 shadow-sm"
-                    style="width: fit-content"
-                  >
-                    <p class="mb-0"><strong>Expires:</strong></p>
-                    <p class="mb-0">12.12.2024</p>
-                  </div>
-                </div>
-                <div class="card-footer bg-info text-center">
-                  <a href="#" class="btn btn-link">View the listing</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
+      </div> -->
 
-        <figure class="divider divider-1 my-4"></figure>
+      <figure class="divider divider-1 my-4"></figure>
 
-        <h3 class="text-center mb-4">Your Bids</h3>
-        <p class="text-center mb-4">You have no active bids</p>
+      <h3 class="text-center mb-4">Your Bids</h3>
+      <p class="text-center mb-4">You have no active bids</p>
 
+      <!-- Section for My Wins -->
+      <h3 class="text-center">My Listing Wins</h3>
+      <div id="myWinsList">
+        <div class="Card-grid container rounded-2">
+          <div id="wins-listings-container" class="row"></div>
+        </div>
+      </div>
 
       <footer
         class="footer bg-dark d-flex justify-content-center align-items-center flex-column"

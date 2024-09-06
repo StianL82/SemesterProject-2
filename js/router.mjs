@@ -15,7 +15,8 @@ export function router() {
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
       templates.displayListings();
-/*       getListings(); */
+      templates.renderNavProfile();
+      /*       getListings(); */
       break;
     //Listing Page
     case "/listing":
@@ -27,6 +28,7 @@ export function router() {
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
       templates.initListingPage();
+      templates.renderNavProfile();
       break;
     //Profile Page
     case "/profile":
@@ -35,6 +37,10 @@ export function router() {
     case "/profile/index.html":
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
+      templates.renderNavProfile();
+      templates.renderProfileInformation();
+      templates.renderMyListings();
+      templates.renderMyWins();
       break;
 
     default:
