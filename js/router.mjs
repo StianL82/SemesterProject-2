@@ -1,5 +1,6 @@
 import * as handlers from "./handlers/index.mjs";
 import * as templates from "./templates/index.mjs";
+import * as components from "./components/index.mjs";
 /* import { getListings } from "./api/listings/getListings.mjs"; */
 
 const path = location.pathname;
@@ -41,6 +42,9 @@ export function router() {
       templates.renderProfileInformation();
       templates.renderMyListings();
       templates.renderMyWins();
+      components.setupAddListingForm();
+/*       components.updateAvatar(); */
+/*       templates.renderMyActiveBids(); */
       break;
 
     default:

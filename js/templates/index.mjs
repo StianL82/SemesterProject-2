@@ -5,3 +5,4 @@ export * from "./renderProfileInformation.mjs";
 export * from "./renderNavProfile.mjs";
 export * from "./renderMyListings.mjs";
 export * from "./renderMyWins.mjs";
+export * from "./renderMyActiveBids.mjs";
