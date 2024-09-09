@@ -3,7 +3,6 @@ import { authFetch } from "../authFetch.mjs";
 
 const searchAction = "/listings/search";
 
-// Funksjon for å søke etter oppføringer basert på en spørring (query)
 export async function searchListingsFromAPI(query) {
   try {
     const searchURL = `${API_AUCTION_URL}${searchAction}?q=${encodeURIComponent(

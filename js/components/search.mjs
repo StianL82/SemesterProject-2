@@ -1,20 +1,20 @@
-import { searchListingsFromAPI } from "../api/listings/search.mjs"; // Ny funksjon for søk i API-et
-import { createCardTemplate } from "../templates/listingCard.mjs"; // For å generere kortene
+import { searchListingsFromAPI } from "../api/listings/search.mjs";
+import { createCardTemplate } from "../templates/listingCard.mjs";
 
 export async function searchListings(query) {
   try {
-    const searchResults = await searchListingsFromAPI(query); // Kall søkefunksjonen fra API-et
+    const searchResults = await searchListingsFromAPI(query);
     const listings = searchResults.data || [];
 
     const container = document.getElementById("listings-container");
-    container.innerHTML = ""; // Tøm containeren før nye resultater vises
+    container.innerHTML = "";
 
     if (listings.length === 0) {
-      container.innerHTML = "<p>No listings found matching your search.</p>"; // Vise melding hvis ingen treff
+      container.innerHTML = "<p>No listings found matching your search.</p>";
     } else {
       listings.forEach((listing) => {
         const card = createCardTemplate(listing);
-        container.appendChild(card); // Legg til kortene i containeren
+        container.appendChild(card);
       });
     }
   } catch (error) {
