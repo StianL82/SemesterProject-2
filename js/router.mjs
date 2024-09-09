@@ -1,7 +1,6 @@
 import * as handlers from "./handlers/index.mjs";
 import * as templates from "./templates/index.mjs";
 import * as components from "./components/index.mjs";
-/* import { getListings } from "./api/listings/getListings.mjs"; */
 
 const path = location.pathname;
 
@@ -17,8 +16,23 @@ export function router() {
       handlers.checkLoginStatus();
       templates.displayListings();
       templates.renderNavProfile();
-      handlers.setupSearchListener(); // Sett opp søkefunksjonen
-      /*       getListings(); */
+      handlers.setupSearchListener();
+      handlers.setupSortListener();
+      components.loadInitialListings();
+
+      const loadMoreBtn = document.querySelector("#loadMoreBtn");
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener("click", components.loadMoreListings);
+      }
+
+      window.addEventListener("popstate", (event) => {
+        if (
+          window.location.pathname === "/" ||
+          window.location.pathname === "/index.html"
+        ) {
+          components.loadInitialListings();
+        }
+      });
       break;
     //Listing Page
     case "/listing":
@@ -44,7 +58,6 @@ export function router() {
       templates.renderMyListings();
       templates.renderMyWins();
       components.setupAddListingForm();
-      /*       components.updateAvatar(); */
       /*       templates.renderMyActiveBids(); */
       break;
 

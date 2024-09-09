@@ -1,19 +1,19 @@
-import { getListings } from "/js/api/listings/getListings.mjs";
+import { getAllListings } from "/js/api/listings/getAllListings.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
 
 let currentPage = 1;
 const listingsPerPage = 20;
-let allListingsLoaded = false; // Sjekker om alle lister er lastet
+let allListingsLoaded = false;
 
 export async function displayListings(page = 1, append = false) {
   try {
-    const listingsResponse = await getListings(listingsPerPage, page);
+    const listingsResponse = await getAllListings(listingsPerPage, page);
     const listings = listingsResponse.data || [];
 
     const container = document.getElementById("listings-container");
 
     if (!append) {
-      container.innerHTML = ""; // Tøm containeren hvis vi ikke legger til flere
+      container.innerHTML = "";
     }
 
     listings.forEach((listing) => {
@@ -21,10 +21,9 @@ export async function displayListings(page = 1, append = false) {
       container.appendChild(card);
     });
 
-    // Sjekk om det er færre enn 20 elementer; hvis ja, skjul "Load More"-knappen
     if (listings.length < listingsPerPage) {
-      allListingsLoaded = true; // Ikke vis "Load More"-knappen hvis alt er lastet
-      document.querySelector("#loadMoreBtn").style.display = "none"; // Skjul knappen
+      allListingsLoaded = true;
+      document.querySelector("#loadMoreBtn").style.display = "none";
     }
   } catch (error) {
     console.error("Failed to display listings:", error);
@@ -33,20 +32,18 @@ export async function displayListings(page = 1, append = false) {
 
 function loadMoreListings() {
   if (!allListingsLoaded) {
-    currentPage += 1; // Øk sidenummeret
-    displayListings(currentPage, true); // append = true for å legge til nye annonser
+    currentPage += 1;
+    displayListings(currentPage, true);
   }
 }
 
-// Eventlistener for "Load More"-knappen
 document.addEventListener("DOMContentLoaded", () => {
   const loadMoreBtn = document.querySelector("#loadMoreBtn");
   const listingsContainer = document.getElementById("listings-container");
 
   if (listingsContainer) {
-    // Last første siden ved oppstart bare hvis "listings-container" eksisterer
     displayListings();
-    
+
     if (loadMoreBtn) {
       loadMoreBtn.addEventListener("click", loadMoreListings);
     }
