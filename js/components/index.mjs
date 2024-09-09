@@ -4,3 +4,4 @@ export * from "./openImageModal.mjs";
 export * from "./expireCountdown.mjs";
 export * from "./updateAvatar.mjs";
 export * from "./addListing.mjs";
+export * from "./search.mjs";

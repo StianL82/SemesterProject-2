@@ -17,6 +17,7 @@ export function router() {
       handlers.checkLoginStatus();
       templates.displayListings();
       templates.renderNavProfile();
+      handlers.setupSearchListener(); // Sett opp søkefunksjonen
       /*       getListings(); */
       break;
     //Listing Page
@@ -43,8 +44,8 @@ export function router() {
       templates.renderMyListings();
       templates.renderMyWins();
       components.setupAddListingForm();
-/*       components.updateAvatar(); */
-/*       templates.renderMyActiveBids(); */
+      /*       components.updateAvatar(); */
+      /*       templates.renderMyActiveBids(); */
       break;
 
     default:

@@ -39,7 +39,7 @@ export function createCardTemplate(listingData) {
 
   // Hvis bildet fra URL-en ikke kan lastes, bytt til ditt eget eksempelbilde
   cardImage.onerror = function () {
-    this.src = "/images/eksempelbilde3.png";
+    this.src = "/images/example_image.png";
     this.alt = "Placeholder image for the listing";
   };
 
