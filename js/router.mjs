@@ -18,6 +18,7 @@ export function router() {
       templates.renderNavProfile();
       handlers.setupSearchListener();
       handlers.setupSortListener();
+      templates.setupCarousel();
       components.loadInitialListings();
 
       const loadMoreBtn = document.querySelector("#loadMoreBtn");
