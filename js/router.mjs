@@ -17,6 +17,7 @@ export function router() {
       templates.displayListings();
       templates.renderNavProfile();
       handlers.setupSearchListener();
+      components.setupAddListingForm();
       handlers.setupSortListener();
       templates.setupCarousel();
       components.loadInitialListings();
@@ -59,7 +60,7 @@ export function router() {
       templates.renderMyListings();
       templates.renderMyWins();
       components.setupAddListingForm();
-      /*       templates.renderMyActiveBids(); */
+      templates.renderMyActiveBids();
       break;
 
     default:

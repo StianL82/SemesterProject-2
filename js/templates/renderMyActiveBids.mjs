@@ -3,14 +3,13 @@ import { authFetch } from "/js/api/authFetch.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
 
-let isFetchingBids = false; // Bruk en lås
+let isFetchingBids = false;
 
-// Hent og vis brukerens aktive bud ved å hente alle listings
 async function renderMyActiveBids() {
-  if (isFetchingBids) return; // Sjekk låsen
-  isFetchingBids = true; // Sett låsen
+  if (isFetchingBids) return;
+  isFetchingBids = true;
 
-  const loggedInUser = getLoggedInUser(); // Hent innlogget bruker
+  const loggedInUser = getLoggedInUser();
 
   if (!loggedInUser) {
     console.error("No logged-in user found.");
@@ -18,48 +17,50 @@ async function renderMyActiveBids() {
     return;
   }
 
-  console.log("Fetching all listings and filtering based on user's bids.");
+  console.log("Fetching active bids for the logged-in user.");
 
-  const listingsUrl = `${API_AUCTION_URL}/listings?limit=100`; // Hent alle listings
+  const bidsUrl = `${API_AUCTION_URL}/profiles/${loggedInUser.name}/bids?_listings=true`;
   try {
-    const response = await authFetch(listingsUrl);
-    const listingsData = await response.json();
+    const response = await authFetch(bidsUrl);
+    const bidsData = await response.json();
 
-    // Sjekk API-responsen
-    console.log("Listings response data:", listingsData);
+    console.log("Bids response data:", bidsData);
 
-    const container = document.querySelector("#active-listings-container");
-    container.innerHTML = ""; // Tøm tidligere oppføringer
+    const container = document.querySelector("#active-bids-container");
+    container.innerHTML = "";
 
-    // Filtrer listings der brukeren har byd, sjekk at bids eksisterer før filtrering
-    const userBidsListings = listingsData.data.filter((listing) => {
-      return (
-        listing.bids &&
-        listing.bids.some((bid) => bid.bidderName === loggedInUser.name)
-      );
-    });
-
-    // Sjekk om det er noen slike listings
-    if (userBidsListings.length === 0) {
+    if (bidsData.data.length === 0) {
       const noActiveBidsMessage = document.createElement("p");
       noActiveBidsMessage.textContent = "You have no active bids.";
       container.appendChild(noActiveBidsMessage);
-      isFetchingBids = false; // Fjern låsen
+      isFetchingBids = false;
       return;
     }
 
-    // Hvis brukeren har aktive bud, vis dem
-    userBidsListings.forEach((listing) => {
-      const card = createCardTemplate(listing); // Bruker eksisterende funksjon fra listingCard.mjs
+    const displayedListings = new Set();
+
+    bidsData.data.forEach((bid) => {
+      const listing = bid.listing;
+
+      if (displayedListings.has(listing.id)) {
+        return;
+      }
+
+      const now = new Date();
+      const endsAt = new Date(listing.endsAt);
+      if (endsAt < now) {
+        return;
+      }
+
+      const card = createCardTemplate(listing);
       container.appendChild(card);
+
+      displayedListings.add(listing.id);
     });
   } catch (error) {
-    console.error(
-      "Error fetching all listings or filtering user's bids:",
-      error
-    );
+    console.error("Error fetching user's bids:", error);
   } finally {
-    isFetchingBids = false; // Fjern låsen etter at prosessen er ferdig
+    isFetchingBids = false;
   }
 }
 
