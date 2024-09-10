@@ -382,18 +382,186 @@
       </div>
 
       <div class="showIfLoggedInBlock hidden-until-js">
-        <h3 class="text-center m-4">Do you want to add a new listing?</h3>
+        <h3 class="text-center">Do you want to add a new listing?</h3>
+
         <div class="d-flex justify-content-center">
           <button
             type="button"
-            class="btn btn-primary my-2"
+            class="btn btn-primary my-4"
             data-bs-toggle="modal"
-            data-bs-target="#loginModal"
+            data-bs-target="#addListingModal"
           >
             Add new listing
           </button>
         </div>
       </div>
+  
+            <!-- Add New Listing Modal -->
+            <div
+            class="modal fade"
+            id="addListingModal"
+            tabindex="-1"
+            aria-labelledby="addListingModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content p-4">
+                <div class="modal-header justify-content-center">
+                  <h2 class="modal-title" id="addListingModalLabel">
+                    Add New Listing
+                  </h2>
+                  <button
+                    type="button"
+                    class="btn-close position-absolute end-0 me-4"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body bg-light-blue p-5 rounded-3">
+                  <!-- Add new listing form -->
+                  <form id="addListingForm">
+                    <div class="mb-3">
+                      <label for="title" class="mb-2">Title:</label>
+                      <input
+                        type="text"
+                        class="form-control mb-4"
+                        id="title"
+                        name="title"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="description" class="mb-2">Description:</label>
+                      <textarea
+                        class="form-control mb-4"
+                        id="description"
+                        name="description"
+                        maxlength="160"
+                        rows="3"
+                        placeholder="Up to 160 characters"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="expiresAt" class="mb-2">Listing Expires:</label>
+                      <input
+                        type="date"
+                        class="form-control mb-4"
+                        id="expiresAt"
+                        name="expiresAt"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="media" class="mb-2">Media URL:</label>
+                      <input
+                        type="url"
+                        class="form-control mb-4"
+                        id="media"
+                        name="media"
+                        placeholder="Enter a valid image URL"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="mediaAlt" class="mb-2">Media Alt Text:</label>
+                      <input
+                        type="text"
+                        class="form-control mb-4"
+                        id="mediaAlt"
+                        name="mediaAlt"
+                        placeholder="Image alt text (optional)"
+                      />
+                    </div>
+    
+                    <div class="mb-3 text-center">
+                      <label class="mb-2" style="font-weight: bold"
+                        >Add More Media (Optional):</label
+                      >
+                    </div>
+    
+                    <div class="mb-3">
+                      <label for="extraMedia1" class="mb-2">Extra Image 1:</label>
+                      <input
+                        type="url"
+                        class="form-control mb-2"
+                        id="extraMedia1"
+                        name="extraMedia1"
+                        placeholder="Enter a valid image URL"
+                      />
+                      <label for="extraMediaAlt1" class="mb-2"
+                        >Alt text for Extra Image 1:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-4"
+                        id="extraMediaAlt1"
+                        name="extraMediaAlt1"
+                        placeholder="Alt text (optional)"
+                      />
+                    </div>
+    
+                    <div class="mb-3">
+                      <label for="extraMedia2" class="mb-2">Extra Image 2:</label>
+                      <input
+                        type="url"
+                        class="form-control mb-2"
+                        id="extraMedia2"
+                        name="extraMedia2"
+                        placeholder="Enter a valid image URL"
+                      />
+                      <label for="extraMediaAlt2" class="mb-2"
+                        >Alt text for Extra Image 2:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-4"
+                        id="extraMediaAlt2"
+                        name="extraMediaAlt2"
+                        placeholder="Alt text (optional)"
+                      />
+                    </div>
+    
+                    <div class="mb-3">
+                      <label for="extraMedia3" class="mb-2">Extra Image 3:</label>
+                      <input
+                        type="url"
+                        class="form-control mb-2"
+                        id="extraMedia3"
+                        name="extraMedia3"
+                        placeholder="Enter a valid image URL"
+                      />
+                      <label for="extraMediaAlt3" class="mb-2"
+                        >Alt text for Extra Image 3:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-4"
+                        id="extraMediaAlt3"
+                        name="extraMediaAlt3"
+                        placeholder="Alt text (optional)"
+                      />
+                    </div>
+    
+                    <div class="d-grid gap-2">
+                      <button type="submit" class="btn btn-success">
+                        Create Listing
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
       <figure class="divider divider-1 my-4"></figure>
 

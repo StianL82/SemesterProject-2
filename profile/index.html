@@ -46,7 +46,6 @@
                 id="navProfileContainer"
                 class="d-flex flex-column align-items-center justify-content-center"
               >
-                <!-- Dynamisk genererte avatar og kredittinformasjon vil legges til her -->
               </div>
 
               <div class="nav-item py-4 py-md-2">
@@ -67,12 +66,10 @@
 
       <div class="container bg-info rounded-2 border border-dark my-5">
         <div class="row p-4 rounded-3 justify-content-center g-4">
-          <!-- Profile Information -->
           <div
             class="col-lg-5 d-flex flex-column bg-light-blue p-4 rounded-3 me-lg-4 border border-dark"
           >
             <div class="row flex-lg-row flex-column">
-              <!-- Avatar Div -->
               <h3 class="text-center mb-3">Profile Information</h3>
               <div
                 class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0"
@@ -84,7 +81,6 @@
                 />
               </div>
 
-              <!-- Profile Information Div -->
               <div
                 class="col-lg-8 d-flex flex-column justify-content-center align-items-center profile-info"
               >
@@ -97,7 +93,6 @@
             </div>
           </div>
 
-          <!-- Change Avatar -->
           <div
             class="col-lg-5 d-flex flex-column justify-content-center align-items-center bg-light p-4 rounded-3 ms-lg-4 border border-dark"
           >
@@ -107,7 +102,7 @@
               class="form-control mb-3"
               placeholder="(must be a valid image-URL)"
             />
-            <button type="button" class="btn btn-primary">Update Avatar</button>
+            <button type="button" class="btn btn-primary updateAvatarButton">Update Avatar</button>
           </div>
         </div>
       </div>
@@ -127,163 +122,172 @@
         </button>
       </div>
 
-<!-- Add New Listing Modal -->
-<div
-  class="modal fade"
-  id="addListingModal"
-  tabindex="-1"
-  aria-labelledby="addListingModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header justify-content-center">
-        <h2 class="modal-title" id="addListingModalLabel">Add New Listing</h2>
-        <button
-          type="button"
-          class="btn-close position-absolute end-0 me-4"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+      <!-- Add New Listing Modal -->
+      <div
+        class="modal fade"
+        id="addListingModal"
+        tabindex="-1"
+        aria-labelledby="addListingModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-4">
+            <div class="modal-header justify-content-center">
+              <h2 class="modal-title" id="addListingModalLabel">
+                Add New Listing
+              </h2>
+              <button
+                type="button"
+                class="btn-close position-absolute end-0 me-4"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body bg-light-blue p-5 rounded-3">
+              <!-- Add new listing form -->
+              <form id="addListingForm">
+                <div class="mb-3">
+                  <label for="title" class="mb-2">Title:</label>
+                  <input
+                    type="text"
+                    class="form-control mb-4"
+                    id="title"
+                    name="title"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="mb-2">Description:</label>
+                  <textarea
+                    class="form-control mb-4"
+                    id="description"
+                    name="description"
+                    maxlength="160"
+                    rows="3"
+                    placeholder="Up to 160 characters"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="expiresAt" class="mb-2">Listing Expires:</label>
+                  <input
+                    type="date"
+                    class="form-control mb-4"
+                    id="expiresAt"
+                    name="expiresAt"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="media" class="mb-2">Media URL:</label>
+                  <input
+                    type="url"
+                    class="form-control mb-4"
+                    id="media"
+                    name="media"
+                    placeholder="Enter a valid image URL"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="mediaAlt" class="mb-2">Media Alt Text:</label>
+                  <input
+                    type="text"
+                    class="form-control mb-4"
+                    id="mediaAlt"
+                    name="mediaAlt"
+                    placeholder="Image alt text (optional)"
+                  />
+                </div>
+
+                <div class="mb-3 text-center">
+                  <label class="mb-2" style="font-weight: bold"
+                    >Add More Media (Optional):</label
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label for="extraMedia1" class="mb-2">Extra Image 1:</label>
+                  <input
+                    type="url"
+                    class="form-control mb-2"
+                    id="extraMedia1"
+                    name="extraMedia1"
+                    placeholder="Enter a valid image URL"
+                  />
+                  <label for="extraMediaAlt1" class="mb-2"
+                    >Alt text for Extra Image 1:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-4"
+                    id="extraMediaAlt1"
+                    name="extraMediaAlt1"
+                    placeholder="Alt text (optional)"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="extraMedia2" class="mb-2">Extra Image 2:</label>
+                  <input
+                    type="url"
+                    class="form-control mb-2"
+                    id="extraMedia2"
+                    name="extraMedia2"
+                    placeholder="Enter a valid image URL"
+                  />
+                  <label for="extraMediaAlt2" class="mb-2"
+                    >Alt text for Extra Image 2:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-4"
+                    id="extraMediaAlt2"
+                    name="extraMediaAlt2"
+                    placeholder="Alt text (optional)"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="extraMedia3" class="mb-2">Extra Image 3:</label>
+                  <input
+                    type="url"
+                    class="form-control mb-2"
+                    id="extraMedia3"
+                    name="extraMedia3"
+                    placeholder="Enter a valid image URL"
+                  />
+                  <label for="extraMediaAlt3" class="mb-2"
+                    >Alt text for Extra Image 3:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-4"
+                    id="extraMediaAlt3"
+                    name="extraMediaAlt3"
+                    placeholder="Alt text (optional)"
+                  />
+                </div>
+
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-success">
+                    Create Listing
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body bg-light-blue p-5 rounded-3">
-        <!-- Add new listing form -->
-        <form id="addListingForm">
-          <div class="mb-3">
-            <label for="title" class="mb-2">Title:</label>
-            <input
-              type="text"
-              class="form-control mb-4"
-              id="title"
-              name="title"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="description" class="mb-2">Description:</label>
-            <textarea
-              class="form-control mb-4"
-              id="description"
-              name="description"
-              maxlength="160"
-              rows="3"
-              placeholder="Up to 160 characters"
-              required
-            ></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="expiresAt" class="mb-2">Listing Expires:</label>
-            <input
-              type="date"
-              class="form-control mb-4"
-              id="expiresAt"
-              name="expiresAt"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="media" class="mb-2">Media URL:</label>
-            <input
-              type="url"
-              class="form-control mb-4"
-              id="media"
-              name="media"
-              placeholder="Enter a valid image URL"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="mediaAlt" class="mb-2">Media Alt Text:</label>
-            <input
-              type="text"
-              class="form-control mb-4"
-              id="mediaAlt"
-              name="mediaAlt"
-              placeholder="Image alt text (optional)"
-            />
-          </div>
-
-          <!-- Centered "Add More Media" label -->
-          <div class="mb-3 text-center">
-            <label class="mb-2" style="font-weight: bold;">Add More Media (Optional):</label>
-          </div>
-
-          <!-- Fixed fields for three additional media -->
-          <div class="mb-3">
-            <label for="extraMedia1" class="mb-2">Extra Image 1:</label>
-            <input
-              type="url"
-              class="form-control mb-2"
-              id="extraMedia1"
-              name="extraMedia1"
-              placeholder="Enter a valid image URL"
-            />
-            <label for="extraMediaAlt1" class="mb-2">Alt text for Extra Image 1:</label>
-            <input
-              type="text"
-              class="form-control mb-4"
-              id="extraMediaAlt1"
-              name="extraMediaAlt1"
-              placeholder="Alt text (optional)"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="extraMedia2" class="mb-2">Extra Image 2:</label>
-            <input
-              type="url"
-              class="form-control mb-2"
-              id="extraMedia2"
-              name="extraMedia2"
-              placeholder="Enter a valid image URL"
-            />
-            <label for="extraMediaAlt2" class="mb-2">Alt text for Extra Image 2:</label>
-            <input
-              type="text"
-              class="form-control mb-4"
-              id="extraMediaAlt2"
-              name="extraMediaAlt2"
-              placeholder="Alt text (optional)"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="extraMedia3" class="mb-2">Extra Image 3:</label>
-            <input
-              type="url"
-              class="form-control mb-2"
-              id="extraMedia3"
-              name="extraMedia3"
-              placeholder="Enter a valid image URL"
-            />
-            <label for="extraMediaAlt3" class="mb-2">Alt text for Extra Image 3:</label>
-            <input
-              type="text"
-              class="form-control mb-4"
-              id="extraMediaAlt3"
-              name="extraMediaAlt3"
-              placeholder="Alt text (optional)"
-            />
-          </div>
-
-          <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-success">Create Listing</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
 
       <div id="listingCards" class="container my-5">
         <div class="accordion" id="accordionListing">
@@ -304,12 +308,11 @@
               id="collapseOne"
               class="accordion-collapse collapse show"
               aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample"
+              data-bs-parent="#myListingsAccordion"
             >
               <div class="accordion-body">
                 <div id="myListings">
                   <div class="Card-grid container rounded-2">
-                    <!-- Oppdater id til en unik verdi for My Listings -->
                     <div id="my-listings-container" class="row"></div>
                   </div>
                 </div>
@@ -318,6 +321,34 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                My active bids
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#activeBidsAccordion"
+            >
+              <div class="accordion-body">
+                <div id="myActiveBids">
+                  <div class="Card-grid container rounded-2">
+                    <div id="active-bids-container" class="row"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -333,7 +364,7 @@
               id="collapseThree"
               class="accordion-collapse collapse"
               aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample"
+              data-bs-parent="#myWinsAccordion"
             >
               <div class="accordion-body">
                 <div id="myWinsList">
