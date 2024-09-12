@@ -31,14 +31,13 @@ export async function renderNavProfile() {
   avatarElement.alt = "The profile image of the logged in user";
   avatarElement.title = "Profile Page";
 
-  avatarElement.src = "/images/profile_avatar_example.png";
+  avatarElement.style.visibility = "hidden";
 
   avatarElement.onload = () => {
     avatarElement.style.visibility = "visible";
   };
 
   avatarLink.appendChild(avatarElement);
-
   profileContainer.appendChild(avatarLink);
 
   try {
@@ -50,6 +49,7 @@ export async function renderNavProfile() {
       avatarElement.src = data.avatar.url;
     } else {
       avatarElement.src = "/images/exampleAvatar.png";
+      avatarElement.style.visibility = "visible";
     }
 
     const creditsElement = document.createElement("span");
@@ -60,5 +60,6 @@ export async function renderNavProfile() {
   } catch (error) {
     console.error("Error fetching profile data:", error);
     avatarElement.src = "/images/exampleAvatar.png";
+    avatarElement.style.visibility = "visible";
   }
 }
