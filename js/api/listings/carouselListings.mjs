@@ -13,7 +13,10 @@ export async function getListingsWithShortestDeadline() {
 
     return topListings;
   } catch (error) {
-    console.error("Failed to fetch listings:", error);
-    return [];
+    console.error(
+      "Failed to fetch listings in getListingsWithShortestDeadline:",
+      error
+    );
+    throw new Error("Failed to fetch listings. Please try again later.");
   }
 }

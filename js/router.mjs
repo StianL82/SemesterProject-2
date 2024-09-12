@@ -6,7 +6,7 @@ const path = location.pathname;
 
 export function router() {
   switch (path) {
-    //Main Page
+    // Main Page
     case "/":
     case "/index":
     case "/index.html":
@@ -14,13 +14,13 @@ export function router() {
       handlers.setLoginFormListener();
       handlers.setupLogoutButton();
       handlers.checkLoginStatus();
-      templates.displayListings();
       templates.renderNavProfile();
       handlers.setupSearchListener();
       components.setupAddListingForm();
       handlers.setupSortListener();
-      templates.setupCarousel();
-      components.loadInitialListings();
+      templates.setupCarousel().then(() => {
+        components.loadInitialListings();
+      });
 
       const loadMoreBtn = document.querySelector("#loadMoreBtn");
       if (loadMoreBtn) {
@@ -32,11 +32,15 @@ export function router() {
           window.location.pathname === "/" ||
           window.location.pathname === "/index.html"
         ) {
-          components.loadInitialListings();
+          components.showLoadingIndicator();
+          components.loadInitialListings().finally(() => {
+            components.hideLoadingIndicator();
+          });
         }
       });
       break;
-    //Listing Page
+
+    // Listing Page
     case "/listing":
     case "/listing/":
     case "/listing/index":
@@ -48,7 +52,8 @@ export function router() {
       templates.initListingPage();
       templates.renderNavProfile();
       break;
-    //Profile Page
+
+    // Profile Page
     case "/profile":
     case "/profile/":
     case "/profile/index":

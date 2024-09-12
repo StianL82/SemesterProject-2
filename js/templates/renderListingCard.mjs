@@ -1,5 +1,6 @@
 import { getAllListings } from "/js/api/listings/getAllListings.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
+import * as components from "/js/components/index.mjs";
 
 let currentPage = 1;
 const listingsPerPage = 20;
@@ -27,6 +28,20 @@ export async function displayListings(page = 1, append = false) {
     }
   } catch (error) {
     console.error("Failed to display listings:", error);
+
+    const errorMessage = components.displayError(
+      "We are having trouble fetching the listings from the API"
+    );
+    const container = document.getElementById("listings-container");
+
+    container.innerHTML = "";
+    container.appendChild(errorMessage);
+
+    const loadMoreBtn = document.querySelector("#loadMoreBtn");
+    if (loadMoreBtn) {
+      loadMoreBtn.style.display = "none";
+    }
+  } finally {
   }
 }
 
@@ -49,3 +64,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+

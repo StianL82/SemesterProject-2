@@ -1,37 +1,52 @@
 import { getListingsWithShortestDeadline } from "/js/api/listings/carouselListings.mjs";
 import { createCarouselCard } from "./carouselCard.mjs";
+import * as components from "/js/components/index.mjs";
 
 export async function setupCarousel() {
-  const listings = await getListingsWithShortestDeadline();
-  const carouselInner = document.querySelector(".carousel-inner");
+  components.showLoadingIndicator();
 
-  carouselInner.innerHTML = "";
+  try {
+    const listings = await getListingsWithShortestDeadline();
+    const carouselInner = document.querySelector(".carousel-inner");
 
-  let slides = [[], [], []];
+    carouselInner.innerHTML = "";
 
-  listings.forEach((listing, index) => {
-    const card = createCarouselCard(listing);
-    const slideIndex = Math.floor(index / 4);
-    slides[slideIndex].push(card);
-  });
+    let slides = [[], [], []];
 
-  slides.forEach((slide, index) => {
-    const carouselItem = document.createElement("div");
-    carouselItem.classList.add("carousel-item");
-    if (index === 0) {
-      carouselItem.classList.add("active");
-    }
-
-    const row = document.createElement("div");
-    row.classList.add("row");
-
-    slide.forEach((card) => {
-      row.appendChild(card);
+    listings.forEach((listing, index) => {
+      const card = createCarouselCard(listing);
+      const slideIndex = Math.floor(index / 4);
+      slides[slideIndex].push(card);
     });
 
-    carouselItem.appendChild(row);
+    slides.forEach((slide, index) => {
+      const carouselItem = document.createElement("div");
+      carouselItem.classList.add("carousel-item");
+      if (index === 0) {
+        carouselItem.classList.add("active");
+      }
 
-    carouselInner.appendChild(carouselItem);
-  });
+      const row = document.createElement("div");
+      row.classList.add("row");
+
+      slide.forEach((card) => {
+        row.appendChild(card);
+      });
+
+      carouselItem.appendChild(row);
+      carouselInner.appendChild(carouselItem);
+    });
+  } catch (error) {
+    console.error("Error fetching or rendering carousel listings:", error);
+
+    const errorMessage = components.displayError(
+      "We are having trouble fetching the information from the API"
+    );
+    const carouselContainer = document.querySelector(".carousel-inner");
+
+    carouselContainer.innerHTML = "";
+    carouselContainer.appendChild(errorMessage);
+  } finally {
+    components.hideLoadingIndicator();
+  }
 }
-

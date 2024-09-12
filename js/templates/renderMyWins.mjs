@@ -1,26 +1,34 @@
 import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
-import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs"; // Importer funksjonen for å hente innlogget bruker
-import { createCardTemplate } from "/js/templates/listingCard.mjs"; // Bruker kortfunksjonen
+import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
+import { createCardTemplate } from "/js/templates/listingCard.mjs";
+import * as components from "/js/components/index.mjs";
 
-// Hent oppføringer brukeren har vunnet
+let isFetchingWins = false;
+
 async function renderMyWins() {
-  const loggedInUser = getLoggedInUser(); // Hent innlogget bruker
+  if (isFetchingWins) return;
+  isFetchingWins = true;
+
+  const loggedInUser = getLoggedInUser();
 
   if (!loggedInUser) {
     console.error("No logged-in user found.");
+    isFetchingWins = false;
     return;
   }
 
-  const winsUrl = `${API_AUCTION_URL}/profiles/${loggedInUser.name}/wins?limit=100`; // Hent brukers vinner-oppføringer
+  const winsUrl = `${API_AUCTION_URL}/profiles/${loggedInUser.name}/wins?limit=100`;
+
+  components.showLoadingIndicator();
+
   try {
     const response = await authFetch(winsUrl);
     const winsData = await response.json();
 
     const winsContainer = document.querySelector("#wins-listings-container");
-    winsContainer.innerHTML = ""; // Tøm tidligere oppføringer
+    winsContainer.innerHTML = "";
 
-    // Sjekk om brukeren har vunnet noen oppføringer
     if (winsData.data.length === 0) {
       const noWinsMessage = document.createElement("p");
       noWinsMessage.textContent = "You have not won any bids yet.";
@@ -28,13 +36,15 @@ async function renderMyWins() {
       return;
     }
 
-    // Hvis brukeren har vunnet oppføringer, vis dem
     winsData.data.forEach((win) => {
-      const card = createCardTemplate(win); // Bruker eksisterende funksjon fra listingCard.mjs
+      const card = createCardTemplate(win);
       winsContainer.appendChild(card);
     });
   } catch (error) {
     console.error("Error fetching user's wins:", error);
+  } finally {
+    components.hideLoadingIndicator();
+    isFetchingWins = false;
   }
 }
 

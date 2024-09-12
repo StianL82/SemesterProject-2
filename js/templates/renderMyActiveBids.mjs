@@ -2,6 +2,7 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
+import * as components from "/js/components/index.mjs";
 
 let isFetchingBids = false;
 
@@ -20,6 +21,9 @@ async function renderMyActiveBids() {
   console.log("Fetching active bids for the logged-in user.");
 
   const bidsUrl = `${API_AUCTION_URL}/profiles/${loggedInUser.name}/bids?_listings=true`;
+
+  components.showLoadingIndicator();
+
   try {
     const response = await authFetch(bidsUrl);
     const bidsData = await response.json();
@@ -33,7 +37,6 @@ async function renderMyActiveBids() {
       const noActiveBidsMessage = document.createElement("p");
       noActiveBidsMessage.textContent = "You have no active bids.";
       container.appendChild(noActiveBidsMessage);
-      isFetchingBids = false;
       return;
     }
 
@@ -60,6 +63,7 @@ async function renderMyActiveBids() {
   } catch (error) {
     console.error("Error fetching user's bids:", error);
   } finally {
+    components.hideLoadingIndicator();
     isFetchingBids = false;
   }
 }

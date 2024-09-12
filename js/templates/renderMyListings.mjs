@@ -2,6 +2,7 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
+import * as components from "/js/components/index.mjs";
 
 let isFetchingListings = false;
 
@@ -19,6 +20,8 @@ async function renderMyListings() {
 
   const listingsUrl = `${API_AUCTION_URL}/profiles/${loggedInUser.name}/listings?limit=100`;
 
+  components.showLoadingIndicator();
+
   try {
     const response = await authFetch(listingsUrl);
     const listingsData = await response.json();
@@ -30,7 +33,6 @@ async function renderMyListings() {
       const noListingsMessage = document.createElement("p");
       noListingsMessage.textContent = "You have not added any listings yet.";
       container.appendChild(noListingsMessage);
-      isFetchingListings = false;
       return;
     }
 
@@ -41,8 +43,10 @@ async function renderMyListings() {
   } catch (error) {
     console.error("Error fetching user's listings:", error);
   } finally {
+    components.hideLoadingIndicator();
     isFetchingListings = false;
   }
 }
 
 export { renderMyListings };
+
