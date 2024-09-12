@@ -2,7 +2,6 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 
-// Funksjon for å vise profilinformasjon
 export async function renderProfileInformation() {
   const user = getLoggedInUser();
 
@@ -16,23 +15,33 @@ export async function renderProfileInformation() {
     const response = await authFetch(profileUrl);
     const { data } = await response.json();
 
-    // Oppdater kreditter og e-post
     const creditsElement = document.querySelector(".profile-credits");
     const emailElement = document.querySelector(".profile-email");
     const usernameElement = document.querySelector(".profile-username");
 
-    if (creditsElement) creditsElement.textContent = `Your Credits: ${data.credits}`;
+    if (creditsElement)
+      creditsElement.textContent = `My Credits: ${data.credits}`;
     if (emailElement) emailElement.textContent = `E-mail: ${data.email}`;
     if (usernameElement) usernameElement.textContent = `Username: ${data.name}`;
 
-    // Oppdater avatar
     const avatarElement = document.querySelector(".profile-avatar");
+    avatarElement.style.visibility = "hidden";
+
+    avatarElement.onload = () => {
+      avatarElement.style.visibility = "visible";
+    };
+
     if (data.avatar && data.avatar.url) {
       avatarElement.src = data.avatar.url;
     } else {
-      avatarElement.src = "/images/profile_avatar_example.png"; // Standard bilde hvis ingen avatar
+      avatarElement.src = "/images/profile_avatar_example.png";
+      avatarElement.style.visibility = "visible";
     }
   } catch (error) {
     console.error("Error fetching profile data:", error);
+
+    const avatarElement = document.querySelector(".profile-avatar");
+    avatarElement.src = "/images/profile_avatar_example.png";
+    avatarElement.style.visibility = "visible";
   }
 }
