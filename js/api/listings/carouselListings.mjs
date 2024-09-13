@@ -13,10 +13,42 @@ export async function getListingsWithShortestDeadline() {
 
     return topListings;
   } catch (error) {
-    console.error(
-      "Failed to fetch listings in getListingsWithShortestDeadline:",
-      error
-    );
-    throw new Error("Failed to fetch listings. Please try again later.");
+    if (error.response) {
+      const errorMessage = await error.response.text();
+
+      if (error.response.status >= 400 && error.response.status < 500) {
+        console.error(
+          "Client error in getListingsWithShortestDeadline:",
+          errorMessage
+        );
+        alert(
+          "Failed to fetch listings. Please check your input and try again."
+        );
+      } else if (error.response.status >= 500) {
+        console.error(
+          "Server error in getListingsWithShortestDeadline:",
+          errorMessage
+        );
+        alert(
+          "Failed to fetch listings due to server error. Please try again later."
+        );
+      } else {
+        console.error(
+          "Unexpected error in getListingsWithShortestDeadline:",
+          errorMessage
+        );
+        alert(
+          "Something went wrong while fetching listings. Please try again."
+        );
+      }
+    } else {
+      console.error(
+        "Network or unexpected error in getListingsWithShortestDeadline:",
+        error
+      );
+      alert(
+        "Network error. Please check your internet connection and try again."
+      );
+    }
   }
 }

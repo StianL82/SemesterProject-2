@@ -6,6 +6,7 @@ const method = "post";
 
 export async function createListing(postData) {
   const createListingURL = `${API_AUCTION_URL}${action}?_seller=true&_bids=true`;
+
   try {
     const response = await authFetch(createListingURL, {
       method,
@@ -16,16 +17,35 @@ export async function createListing(postData) {
     });
 
     if (!response.ok) {
-      console.error(
-        "Failed to create listing: Server responded with status",
-        response.status
-      );
+      const errorMessage = await response.text();
+
+      if (response.status >= 400 && response.status < 500) {
+        console.error("Client error while creating listing:", errorMessage);
+        alert(
+          "Failed to create listing. Please check your input and try again."
+        );
+      } else if (response.status >= 500) {
+        console.error("Server error while creating listing:", errorMessage);
+        alert(
+          "Failed to create listing due to a server error. Please try again later."
+        );
+      } else {
+        console.error("Unexpected error while creating listing:", errorMessage);
+        alert("An unexpected error occurred. Please try again.");
+      }
+      return null;
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("An error occurred while creating the listing:", error);
-    throw error;
+    console.error(
+      "Network error or unexpected error while creating the listing:",
+      error
+    );
+    alert(
+      "A network error occurred. Please check your internet connection and try again."
+    );
+    return null;
   }
 }

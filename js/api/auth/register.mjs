@@ -46,17 +46,26 @@ export async function register(profile) {
       components.hydrateEmailField();
     } else {
       const errorMessage = await response.text();
+
       if (response.status >= 400 && response.status < 500) {
+        console.error("Client error:", errorMessage);
         alert(
-          `Client error occurred: ${errorMessage}. Please check your input and try again.`
+          `Registration failed: ${errorMessage}. Please check your input and try again.`
+        );
+      } else if (response.status >= 500) {
+        console.error("Server error:", errorMessage);
+        alert(
+          "Registration failed due to a server error. Please try again later."
         );
       } else {
-        alert("Registration failed: " + errorMessage);
+        console.error("Unexpected error:", errorMessage);
+        alert("Registration failed. Please try again.");
       }
-      throw new Error(errorMessage);
     }
   } catch (error) {
-    console.error("Registration error:", error);
-    throw error;
+    console.error("Network error or unexpected error:", error);
+    alert(
+      "An unexpected error occurred while trying to register. Please check your connection and try again."
+    );
   }
 }

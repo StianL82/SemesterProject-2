@@ -18,7 +18,14 @@ export async function login(profile) {
     });
 
     if (response.ok) {
-      const responseData = await response.json();
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (jsonError) {
+        console.error("Failed to parse response JSON:", jsonError);
+        alert("Login failed. Invalid response from the server.");
+        return;
+      }
 
       const { accessToken, ...user } = responseData.data || {};
 
@@ -32,15 +39,21 @@ export async function login(profile) {
       }
     } else {
       const errorMessage = await response.text();
-      console.error("Login failed:", errorMessage);
-      alert(
-        "Login failed. Please check that your email or password is correct."
-      );
+      
+      if (response.status >= 400 && response.status < 500) {
+        console.error("Client error:", errorMessage);
+        alert("Login failed. Please check your email and password.");
+      } else if (response.status >= 500) {
+        console.error("Server error:", errorMessage);
+        alert("Login failed due to a server error. Please try again later.");
+      } else {
+        console.error("Unexpected error:", errorMessage);
+        alert("Login failed. Please try again.");
+      }
     }
   } catch (error) {
     console.error("Network error:", error);
-    alert(
-      "Network error. Please check your internet connection and try again."
-    );
+    alert("Network error. Please check your internet connection and try again.");
   }
 }
+
