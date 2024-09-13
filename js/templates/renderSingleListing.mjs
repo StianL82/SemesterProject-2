@@ -1,60 +1,7 @@
-import { API_AUCTION_URL } from "/js/api/constants.mjs";
-import { authFetch } from "/js/api/authFetch.mjs";
-import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
-import { enableImageModal } from "/js/components/openImageModal.mjs";
-import { startCountdown } from "/js/components/expireCountdown.mjs";
+import * as components from "/js/components/index.mjs";
 
-async function placeBid(listingId, bidAmount) {
-  const bidUrl = `${API_AUCTION_URL}/listings/${listingId}/bids?timestamp=${new Date().getTime()}`;
-
-  console.log("Sending bid to URL:", bidUrl);
-  console.log("Bid amount:", bidAmount);
-
-  try {
-    const response = await authFetch(bidUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: bidAmount }),
-    });
-
-    if (!response.ok) {
-      const errorResponse = await response.json();
-      console.error("Server error response:", errorResponse);
-      throw new Error("Failed to place bid. Make sure your bid is valid.");
-    }
-
-    const data = await response.json();
-    console.log("Bid successfully placed:", data);
-    return data;
-  } catch (error) {
-    console.error("Error placing bid:", error);
-    throw error;
-  }
-}
-
-function getListingId() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("id");
-}
-
-async function fetchListingData(id) {
-  const listingUrl = `${API_AUCTION_URL}/listings/${id}?_seller=true&_bids=true`;
-  try {
-    const response = await authFetch(listingUrl);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch listing with ID ${id}`);
-    }
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    console.error("Error fetching listing data:", error);
-  }
-}
-
-function updatePageWithListingData(listing) {
-  const loggedInUser = getLoggedInUser();
+export function updatePageWithListingData(listing) {
+  const loggedInUser = components.getLoggedInUser();
   const sellerName = listing.seller.name;
 
   const bidInputGroup = document.querySelector(".input-group");
@@ -102,7 +49,7 @@ function updatePageWithListingData(listing) {
     extraImageContainer.appendChild(noImagesMessage);
   }
 
-  enableImageModal(listing);
+  components.enableImageModal(listing);
 
   const sellerElement = document.querySelector(".seller");
   if (listing.seller && listing.seller.name) {
@@ -141,14 +88,14 @@ function updatePageWithListingData(listing) {
         bidContainer.style.display = "block";
       }
 
-      startCountdown(listing.endsAt);
+      components.startCountdown(listing.endsAt);
     }
   } else {
     endsAtElement.textContent = "No expiration date";
   }
 
   if (listing.endsAt) {
-    startCountdown(listing.endsAt);
+    components.startCountdown(listing.endsAt);
   }
 
   let highestBid = 0;
@@ -218,7 +165,7 @@ function updatePageWithListingData(listing) {
         bootstrapModal.hide();
 
         try {
-          await placeBid(listing.id, bidAmount);
+          await components.placeBid(listing.id, bidAmount);
           alert("Your bid was placed successfully!");
           bidInput.value = "";
           location.reload();
@@ -231,23 +178,11 @@ function updatePageWithListingData(listing) {
     }
 
     try {
-      await placeBid(listing.id, bidAmount);
+      await components.placeBid(listing.id, bidAmount);
       alert("Your bid was placed successfully!");
       location.reload();
     } catch (error) {
       alert("Failed to place bid. Please try again.");
     }
   });
-}
-
-export async function initListingPage() {
-  const listingId = getListingId();
-  if (listingId) {
-    const listingData = await fetchListingData(listingId);
-    if (listingData) {
-      updatePageWithListingData(listingData);
-    }
-  } else {
-    console.error("No listing ID found in URL.");
-  }
 }

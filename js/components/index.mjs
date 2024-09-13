@@ -13,3 +13,5 @@ export * from "./displayError.mjs";
 export * from "./loadInitialListings.mjs";
 export * from "./loadMoreListings.mjs";
 export * from "./displayListings.mjs";
+export * from "./placeBid.mjs";
+export * from "./getListingID.mjs";
