@@ -1,5 +1,4 @@
 export * from "./listingCard.mjs";
-export * from "./renderListingCard.mjs";
 export * from "./renderSingleListing.mjs";
 export * from "./renderProfileInformation.mjs";
 export * from "./renderNavProfile.mjs";
