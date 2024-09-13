@@ -62,6 +62,13 @@ async function renderMyActiveBids() {
     });
   } catch (error) {
     console.error("Error fetching user's bids:", error);
+
+    const container = document.querySelector("#active-bids-container");
+    const errorMessage = components.displayError(
+      "We encountered an error while fetching your active bids. Please try again later."
+    );
+    container.innerHTML = "";
+    container.appendChild(errorMessage);
   } finally {
     components.hideLoadingIndicator();
     isFetchingBids = false;

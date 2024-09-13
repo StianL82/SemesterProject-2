@@ -42,6 +42,13 @@ async function renderMyListings() {
     });
   } catch (error) {
     console.error("Error fetching user's listings:", error);
+    
+    const container = document.querySelector("#my-listings-container");
+    const errorMessage = components.displayError(
+      "We encountered an error while fetching your listings. Please try again later."
+    );
+    container.innerHTML = "";
+    container.appendChild(errorMessage);
   } finally {
     components.hideLoadingIndicator();
     isFetchingListings = false;
@@ -49,4 +56,5 @@ async function renderMyListings() {
 }
 
 export { renderMyListings };
+
 

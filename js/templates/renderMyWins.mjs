@@ -42,6 +42,13 @@ async function renderMyWins() {
     });
   } catch (error) {
     console.error("Error fetching user's wins:", error);
+    
+    const winsContainer = document.querySelector("#wins-listings-container");
+    const errorMessage = components.displayError(
+      "We encountered an error while fetching your wins. Please try again later."
+    );
+    winsContainer.innerHTML = "";
+    winsContainer.appendChild(errorMessage);
   } finally {
     components.hideLoadingIndicator();
     isFetchingWins = false;
@@ -49,3 +56,4 @@ async function renderMyWins() {
 }
 
 export { renderMyWins };
+
