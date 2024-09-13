@@ -6,7 +6,6 @@ export async function renderNavProfile() {
   const user = getLoggedInUser();
 
   if (!user) {
-    console.error("No logged-in user found.");
     return;
   }
 
