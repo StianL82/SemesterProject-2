@@ -24,6 +24,24 @@ async function renderMyListings() {
 
   try {
     const response = await authFetch(listingsUrl);
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      if (response.status >= 400 && response.status < 500) {
+        console.error("Client error while fetching listings:", errorMessage);
+        throw new Error(
+          "We couldn't fetch your listings. Please check your input and try again."
+        );
+      } else if (response.status >= 500) {
+        console.error("Server error while fetching listings:", errorMessage);
+        throw new Error(
+          "We're currently experiencing server issues. Please try again later."
+        );
+      } else {
+        throw new Error("An unexpected error occurred. Please try again.");
+      }
+    }
+
     const listingsData = await response.json();
 
     const container = document.querySelector("#my-listings-container");
@@ -42,10 +60,11 @@ async function renderMyListings() {
     });
   } catch (error) {
     console.error("Error fetching user's listings:", error);
-    
+
     const container = document.querySelector("#my-listings-container");
     const errorMessage = components.displayError(
-      "We encountered an error while fetching your listings. Please try again later."
+      error.message ||
+        "We encountered an error while fetching your listings. Please try again later."
     );
     container.innerHTML = "";
     container.appendChild(errorMessage);
@@ -56,5 +75,3 @@ async function renderMyListings() {
 }
 
 export { renderMyListings };
-
-

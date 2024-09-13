@@ -39,11 +39,26 @@ export async function setupCarousel() {
   } catch (error) {
     console.error("Error fetching or rendering carousel listings:", error);
 
+    if (error.message === "Failed to fetch") {
+      alert(
+        "Network error. Please check your internet connection and try again."
+      );
+    } else if (
+      error.response &&
+      error.response.status >= 400 &&
+      error.response.status < 500
+    ) {
+      alert("Client error. Please check your request.");
+    } else if (error.response && error.response.status >= 500) {
+      alert("Server error. Please try again later.");
+    } else {
+      alert("An unexpected error occurred. Please try again.");
+    }
+
+    const carouselContainer = document.querySelector(".carousel-inner");
     const errorMessage = components.displayError(
       "We are having trouble fetching the information from the API"
     );
-    const carouselContainer = document.querySelector(".carousel-inner");
-
     carouselContainer.innerHTML = "";
     carouselContainer.appendChild(errorMessage);
   } finally {

@@ -24,6 +24,24 @@ async function renderMyWins() {
 
   try {
     const response = await authFetch(winsUrl);
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      if (response.status >= 400 && response.status < 500) {
+        console.error("Client error while fetching wins:", errorMessage);
+        throw new Error(
+          "We couldn't fetch your wins. Please check your input and try again."
+        );
+      } else if (response.status >= 500) {
+        console.error("Server error while fetching wins:", errorMessage);
+        throw new Error(
+          "We're currently experiencing server issues. Please try again later."
+        );
+      } else {
+        throw new Error("An unexpected error occurred. Please try again.");
+      }
+    }
+
     const winsData = await response.json();
 
     const winsContainer = document.querySelector("#wins-listings-container");
@@ -42,10 +60,11 @@ async function renderMyWins() {
     });
   } catch (error) {
     console.error("Error fetching user's wins:", error);
-    
+
     const winsContainer = document.querySelector("#wins-listings-container");
     const errorMessage = components.displayError(
-      "We encountered an error while fetching your wins. Please try again later."
+      error.message ||
+        "We encountered an error while fetching your wins. Please try again later."
     );
     winsContainer.innerHTML = "";
     winsContainer.appendChild(errorMessage);
@@ -56,4 +75,5 @@ async function renderMyWins() {
 }
 
 export { renderMyWins };
+
 

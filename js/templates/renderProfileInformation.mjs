@@ -13,6 +13,24 @@ export async function renderProfileInformation() {
   try {
     const profileUrl = `${API_AUCTION_URL}/profiles/${user.name}`;
     const response = await authFetch(profileUrl);
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      if (response.status >= 400 && response.status < 500) {
+        console.error("Client error:", errorMessage);
+        throw new Error(
+          "Failed to fetch profile information. Please check your input and try again."
+        );
+      } else if (response.status >= 500) {
+        console.error("Server error:", errorMessage);
+        throw new Error(
+          "We're experiencing server issues. Please try again later."
+        );
+      } else {
+        throw new Error("An unexpected error occurred. Please try again.");
+      }
+    }
+
     const { data } = await response.json();
 
     const creditsElement = document.querySelector(".profile-credits");

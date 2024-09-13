@@ -18,17 +18,31 @@ async function renderMyActiveBids() {
     return;
   }
 
-  console.log("Fetching active bids for the logged-in user.");
-
   const bidsUrl = `${API_AUCTION_URL}/profiles/${loggedInUser.name}/bids?_listings=true`;
 
   components.showLoadingIndicator();
 
   try {
     const response = await authFetch(bidsUrl);
-    const bidsData = await response.json();
 
-    console.log("Bids response data:", bidsData);
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      if (response.status >= 400 && response.status < 500) {
+        console.error("Client error while fetching bids:", errorMessage);
+        throw new Error(
+          "We couldn't fetch your active bids. Please check your input and try again."
+        );
+      } else if (response.status >= 500) {
+        console.error("Server error while fetching bids:", errorMessage);
+        throw new Error(
+          "We're currently experiencing server issues. Please try again later."
+        );
+      } else {
+        throw new Error("An unexpected error occurred. Please try again.");
+      }
+    }
+
+    const bidsData = await response.json();
 
     const container = document.querySelector("#active-bids-container");
     container.innerHTML = "";
@@ -65,7 +79,7 @@ async function renderMyActiveBids() {
 
     const container = document.querySelector("#active-bids-container");
     const errorMessage = components.displayError(
-      "We encountered an error while fetching your active bids. Please try again later."
+      error.message || "We encountered an error while fetching your active bids. Please try again later."
     );
     container.innerHTML = "";
     container.appendChild(errorMessage);
@@ -76,3 +90,4 @@ async function renderMyActiveBids() {
 }
 
 export { renderMyActiveBids };
+
