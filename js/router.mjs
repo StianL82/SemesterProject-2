@@ -16,7 +16,7 @@ export function router() {
       handlers.checkLoginStatus();
       templates.renderNavProfile();
       handlers.setupSearchListener();
-      components.setupAddListingForm();
+      handlers.setupAddListingForm();
       handlers.setupSortListener();
       templates.setupCarousel().then(() => {
         components.loadInitialListings();
@@ -64,7 +64,7 @@ export function router() {
       templates.renderProfileInformation();
       templates.renderMyListings();
       templates.renderMyWins();
-      components.setupAddListingForm();
+      handlers.setupAddListingForm();
       templates.renderMyActiveBids();
       break;
 

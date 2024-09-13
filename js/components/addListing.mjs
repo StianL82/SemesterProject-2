@@ -1,22 +1,18 @@
-// Importer createListing-funksjonen fra en annen modul
 import { createListing } from "/js/api/listings/create.mjs";
 
-// Funksjon for å håndtere skjema-sendingen
 export async function handleAddListingForm(event) {
-  event.preventDefault(); // Forhindrer tradisjonell skjema-sending
+  event.preventDefault();
 
-  // Hent data fra skjemaet
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
   const endsAt = document.getElementById("expiresAt").value;
   const media = [
     {
       url: document.getElementById("media").value,
-      alt: document.getElementById("mediaAlt").value || "", // Bruk tom string hvis ingen alt-tekst
+      alt: document.getElementById("mediaAlt").value || "",
     },
   ];
 
-  // Hent data fra de ekstra media-feltene hvis de er utfylt
   const extraMedia1 = document.getElementById("extraMedia1").value;
   const extraMediaAlt1 = document.getElementById("extraMediaAlt1").value;
   if (extraMedia1) {
@@ -44,34 +40,41 @@ export async function handleAddListingForm(event) {
     });
   }
 
-  // Bygg objektet som skal sendes til API-et
   const postData = {
     title,
-    description, // Kan være tom
-    media, // Inneholder minst ett bilde, og opptil 3 ekstra hvis de er angitt
-    endsAt: new Date(endsAt).toISOString(), // Konverter datoen til riktig ISO-format
+    description,
+    media,
+    endsAt: new Date(endsAt).toISOString(),
   };
 
   try {
-    // Kall funksjonen som sender data til API-et
     const response = await createListing(postData);
 
     if (response) {
-      // Vellykket, lukk modalen og vis en suksessmelding
       const modalElement = document.getElementById("addListingModal");
-      const modal = bootstrap.Modal.getInstance(modalElement); // Hent instansen av modalen
-      modal.hide(); // Lukk modalen
+      const modal = bootstrap.Modal.getInstance(modalElement);
+      modal.hide();
 
-      // Vis en suksessmelding
       alert("Listing created successfully");
     }
   } catch (error) {
     console.error("Failed to create listing:", error);
-    alert("An error occurred while creating the listing.");
+
+    if (error.response) {
+      const errorMessage = await error.response.text();
+      if (error.response.status >= 400 && error.response.status < 500) {
+        alert(`Failed to create listing: ${errorMessage}. Please check your input and try again.`);
+      } else if (error.response.status >= 500) {
+        alert(`Failed to create listing: ${errorMessage}. Please try again later.`);
+      } else {
+        alert(`An unexpected error occurred: ${errorMessage}. Please try again.`);
+      }
+    } else {
+      alert("A network error occurred. Please check your connection and try again.");
+    }
   }
 }
 
-// Funksjon for å legge til event listener på skjemaet
 export function setupAddListingForm() {
   document.addEventListener("DOMContentLoaded", () => {
     const addListingForm = document.getElementById("addListingForm");
@@ -80,3 +83,4 @@ export function setupAddListingForm() {
     }
   });
 }
+
