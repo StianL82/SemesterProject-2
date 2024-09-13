@@ -3,7 +3,6 @@ export function openImageModal(imageSrc, imageAlt) {
   modalImage.src = imageSrc;
   modalImage.alt = imageAlt;
 
-  // Sett tittelen til bildet i modalen (du kan også bruke imageAlt her)
   const modalTitle = document.getElementById("imageModalLabel");
   modalTitle.textContent = imageAlt || "Full-size Image";
 

@@ -1,13 +1,12 @@
-// getLoggedInUser.mjs
 export function getLoggedInUser() {
   const userData = localStorage.getItem("profile");
 
   if (!userData) {
-    return null; // Ingen bruker er logget inn
+    return null;
   }
 
   try {
-    return JSON.parse(userData); // Returner brukerens data som et objekt
+    return JSON.parse(userData);
   } catch (error) {
     console.error("Failed to parse user data from localStorage:", error);
     return null;
