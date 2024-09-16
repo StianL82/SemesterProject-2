@@ -13,7 +13,13 @@ export function renderSingleListing(listing) {
   titleElement.textContent = listing.title;
 
   const descriptionElement = document.querySelector(".itemDescription");
-  descriptionElement.textContent = listing.description;
+
+  if (listing.description && listing.description.trim() !== "") {
+    descriptionElement.textContent = listing.description;
+  } else {
+    descriptionElement.textContent = "No description added";
+  }
+  
 
   const mainImage = document.querySelector(".main-listing-image");
   if (listing.media && listing.media.length > 0) {
@@ -56,6 +62,13 @@ export function renderSingleListing(listing) {
     sellerElement.textContent = listing.seller.name;
   } else {
     sellerElement.textContent = "Unknown seller";
+  }
+
+  const listedOnElement = document.querySelector(".listedOn");
+  const createdDate = new Date(listing.created).toLocaleDateString("en-GB");
+
+  if (listedOnElement) {
+    listedOnElement.textContent = createdDate;
   }
 
   const endsAtElement = document.querySelector(".expires");

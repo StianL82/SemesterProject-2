@@ -51,13 +51,29 @@ export function createCardTemplate(listingData) {
   card.appendChild(cardOverlay);
 
   const overlayContent = document.createElement("div");
-  overlayContent.classList.add("bg-white", "p-2", "shadow-sm");
+  overlayContent.classList.add("p-2", "shadow-sm");
   overlayContent.style.width = "fit-content";
+
+  // Sjekk om listingen er utgått
+  const isExpired = new Date(endsAt) < new Date();
+
+  if (isExpired) {
+    overlayContent.classList.add("bg-danger", "text-white");
+  } else {
+    overlayContent.classList.add("bg-white");
+  }
+
   cardOverlay.appendChild(overlayContent);
 
   const expiresLabel = document.createElement("p");
   expiresLabel.classList.add("mb-0");
-  expiresLabel.innerHTML = "<strong>Expires:</strong>";
+
+  if (isExpired) {
+    expiresLabel.innerHTML = "<strong>Expired:</strong>";
+  } else {
+    expiresLabel.innerHTML = "<strong>Expires:</strong>";
+  }
+
   overlayContent.appendChild(expiresLabel);
 
   const expiresDate = document.createElement("p");
@@ -81,3 +97,4 @@ export function createCardTemplate(listingData) {
 
   return cardCol;
 }
+
