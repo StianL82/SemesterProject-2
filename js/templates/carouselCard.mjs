@@ -5,7 +5,8 @@ export function createCarouselCard(listing) {
   const daysLeft = calculateDaysLeft(endsAt);
 
   const cardCol = document.createElement("div");
-  cardCol.classList.add("col-12", "col-md-6", "col-lg-3", "carouselCards");
+  cardCol.classList.add("col-12", "col-md-6", "col-lg-3", "carouselCards", "mb-3");
+  
 
   const link = document.createElement("a");
   link.href = `/listing/index.html?id=${id}`;
