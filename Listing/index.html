@@ -270,7 +270,11 @@
       </section>
 
       <div class="container back">
-        <a href="#" class="backLink d-flex align-items-center" onclick="window.history.back();">
+        <a
+          href="#"
+          class="backLink d-flex align-items-center"
+          onclick="window.history.back();"
+        >
           <img
             src="/images/backArrowIcon.png"
             alt="Back arrow"
@@ -279,7 +283,6 @@
           <p class="backText mb-0">Back to previous page</p>
         </a>
       </div>
-      
 
       <h1 class="itemTitle text-center my-5">Item Title</h1>
 
@@ -446,27 +449,30 @@
       <div
         class="showIfLoggedInFlex hidden-until-js container d-flex justify-content-center my-5"
       >
-      <div class="col-12 col-md-6 bg-light-blue p-4 rounded-3 border border-dark">
-        <h3 class="text-center mb-3">Bid History</h3>
-        <p class="text-center"><span class="BidNumber"></span></p>
-      
-        <div class="mx-auto w-75">
-          <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
-            <span class="fw-bold">Bidder</span>
-            <span class="fw-bold">Amount</span>
+        <div
+          class="col-12 col-md-6 bg-light-blue p-4 rounded-3 border border-dark"
+        >
+          <h3 class="text-center mb-3">Bid History</h3>
+          <p class="text-center"><span class="BidNumber"></span></p>
+
+          <div class="mx-auto w-75">
+            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+              <span class="fw-bold">Bidder</span>
+              <span class="fw-bold">Amount</span>
+            </div>
+
+            <div class="bidHistoryContainer"></div>
           </div>
-      
-          <div class="bidHistoryContainer"></div>
         </div>
-      </div>
-      
       </div>
 
       <footer
         class="footer bg-dark d-flex justify-content-center align-items-center flex-column"
       >
         <div class="d-flex justify-content-center p-3">
-          <img src="/images/logo.png" alt="AuctionHouse logo" />
+          <a href="/index.html"
+            ><img src="/images/logo.png" alt="AuctionHouse logo"
+          /></a>
         </div>
         <div class="text-center pb-3">
           <span class="copyright text-white">© 2024 Stian Lilleng</span>
