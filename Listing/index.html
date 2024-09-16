@@ -68,8 +68,7 @@
               <div
                 id="navProfileContainer"
                 class="d-flex flex-column align-items-center justify-content-center"
-              >
-              </div>
+              ></div>
               <div class="nav-item py-4 py-md-2">
                 <button
                   type="button"
@@ -104,7 +103,7 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body bg-light-blue p-5 rounded-3">
+            <div class="modal-body bg-light-blue p-3 p-md-5 rounded-3">
               <!-- Login form content -->
               <form id="loginForm">
                 <div class="mb-3">
@@ -134,13 +133,7 @@
                   <button type="submit" class="btn btn-warning">Login</button>
                 </div>
                 <div class="text-center mt-3">
-                  <p>
-                    or
-                    <a href="#" class="text-decoration-none text-success"
-                      >register</a
-                    >
-                    if you don't have an account
-                  </p>
+                  <p>or register if you don't have an account</p>
                 </div>
               </form>
             </div>
@@ -178,7 +171,7 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body bg-light-blue p-5 rounded-3">
+            <div class="modal-body bg-light-blue p-3 p-md-5 rounded-3">
               <form>
                 <div class="mb-3">
                   <label for="name" class="mb-2">Username:</label>
@@ -241,13 +234,7 @@
                   </button>
                 </div>
                 <div class="text-center mt-3">
-                  <p>
-                    or
-                    <a href="#" class="text-decoration-none text-success"
-                      >Log in</a
-                    >
-                    if you already have an account
-                  </p>
+                  <p>or log in if you already have an account</p>
                 </div>
               </form>
             </div>
@@ -282,11 +269,17 @@
         </div>
       </section>
 
-      <div class="container mt">
-        <a href="#" class="backLink" onclick="window.history.back();"
-          ><p>Back to previous page</p></a
-        >
+      <div class="container back">
+        <a href="#" class="backLink d-flex align-items-center" onclick="window.history.back();">
+          <img
+            src="/images/backArrowIcon.png"
+            alt="Back arrow"
+            class="backArrow"
+          />
+          <p class="backText mb-0">Back to previous page</p>
+        </a>
       </div>
+      
 
       <h1 class="itemTitle text-center my-5">Item Title</h1>
 
@@ -305,8 +298,7 @@
 
             <div
               class="image extraImageContainer d-flex flex-column flex-sm-row justify-content-start align-items-center"
-            >
-            </div>
+            ></div>
           </div>
 
           <!-- Image Modal -->
@@ -375,7 +367,7 @@
                   href="#"
                   class="signup-link"
                   data-bs-toggle="modal"
-                  data-bs-target="#signupModal"
+                  data-bs-target="#loginModal"
                   >log in</a
                 >
                 to make an offer.
@@ -460,8 +452,7 @@
             <span class="fw-bold">Amount</span>
           </div>
 
-          <div class="bidHistoryContainer">
-          </div>
+          <div class="bidHistoryContainer"></div>
         </div>
       </div>
 

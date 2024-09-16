@@ -28,3 +28,37 @@
 }
 
 
+/*---------- Back ----------*/
+
+.back {
+  margin-top: 150px;
+}
+
+.backLink {
+  text-decoration: none;
+  color: black;
+  transition: transform 0.3s ease-in-out;
+}
+
+.backArrow {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.backLink:hover {
+  transform: scale(1.01);
+}
+
+.backLink:hover .backArrow {
+  transform: scale(1.01);
+}
+
+
+
+
+
+
+
+
