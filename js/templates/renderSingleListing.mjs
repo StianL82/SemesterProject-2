@@ -112,7 +112,7 @@ export function renderSingleListing(listing) {
   if (listing.bids && listing.bids.length > 0) {
     listing.bids.forEach((bid) => {
       const bidElement = document.createElement("div");
-      bidElement.classList.add("d-flex", "justify-content-around", "mb-2");
+      bidElement.classList.add("d-flex", "justify-content-between", "mb-2");
 
       const bidderSpan = document.createElement("span");
       bidderSpan.classList.add("bidder");

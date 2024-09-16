@@ -24,7 +24,9 @@ h4, p, span {
   font-size: clamp(20px, 3vw, 28px);
 }
 
-
+.text-start p{
+  font-size: clamp(14px, 3vw, 16px);
+}
 
 
 /*---------- Show/Hide ----------*/
@@ -52,3 +54,9 @@ h4, p, span {
 .bidContainer {
   display: none;
 }
+
+.profile-email {
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
