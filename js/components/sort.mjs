@@ -13,6 +13,7 @@ export async function sortListings(
   components.showLoadingIndicator();
 
   try {
+    // Hvis det er første siden, hent alle listings på nytt
     if (page === 1) {
       listings = (await getAllListings()) || [];
     }
@@ -20,58 +21,62 @@ export async function sortListings(
     const now = new Date();
     const sortOptionHeader = document.querySelector(".sortOption");
 
-    let sortedListings;
+    // Filter og sorter alltid hele datasettet basert på sortType
+    let filteredListings = [];
     switch (sortType) {
       case "newestListings":
         sortOptionHeader.textContent = "Listings sorted by most recent";
-        sortedListings = listings.filter(
+        filteredListings = listings.filter(
           (listing) => new Date(listing.endsAt) > now
         );
-        sortedListings.sort(
+        filteredListings.sort(
           (a, b) => new Date(b.created) - new Date(a.created)
         );
         break;
       case "oldestListings":
         sortOptionHeader.textContent = "Listings sorted by oldest first";
-        sortedListings = listings.filter(
+        filteredListings = listings.filter(
           (listing) => new Date(listing.endsAt) > now
         );
-        sortedListings.sort(
+        filteredListings.sort(
           (a, b) => new Date(a.created) - new Date(b.created)
         );
         break;
       case "Alpha-A-Z":
         sortOptionHeader.textContent =
           "Listings in alphabetical order from A-Z";
-        sortedListings = listings.filter(
+        filteredListings = listings.filter(
           (listing) => new Date(listing.endsAt) > now
         );
-        sortedListings.sort((a, b) => a.title.localeCompare(b.title, "nb"));
+        filteredListings.sort((a, b) => a.title.localeCompare(b.title, "nb"));
         break;
       case "Alpha-Z-A":
         sortOptionHeader.textContent =
           "Listings in alphabetical order from Z-A";
-        sortedListings = listings.filter(
+        filteredListings = listings.filter(
           (listing) => new Date(listing.endsAt) > now
         );
-        sortedListings.sort((a, b) => b.title.localeCompare(a.title, "nb"));
+        filteredListings.sort((a, b) => b.title.localeCompare(a.title, "nb"));
         break;
       case "expired":
         sortOptionHeader.textContent = "Expired listings";
-        sortedListings = listings.filter(
+        filteredListings = listings.filter(
           (listing) => new Date(listing.endsAt) < now
         );
-        sortedListings.sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
+        filteredListings.sort(
+          (a, b) => new Date(a.endsAt) - new Date(b.endsAt)
+        );
         break;
       default:
         sortOptionHeader.textContent = "Newest listings";
-        sortedListings = listings.filter(
+        filteredListings = listings.filter(
           (listing) => new Date(listing.endsAt) > now
         );
         break;
     }
 
-    displayListings(sortedListings, page, append);
+    // Oppdater displayet med riktig side
+    displayListings(filteredListings, page, append);
 
     currentPage = page;
   } catch (error) {
