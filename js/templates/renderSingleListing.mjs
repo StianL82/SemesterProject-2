@@ -1,6 +1,6 @@
 import * as components from "/js/components/index.mjs";
 
-export function updatePageWithListingData(listing) {
+export function renderSingleListing(listing) {
   const loggedInUser = components.getLoggedInUser();
   const sellerName = listing.seller.name;
 
@@ -142,8 +142,10 @@ export function updatePageWithListingData(listing) {
 
   const bidButton = document.querySelector(".btn-bid");
   bidButton.addEventListener("click", async () => {
-    const bidInput = document.querySelector("#bidInput").value;
-    const bidAmount = parseFloat(bidInput);
+    const bidInputElement = document.querySelector("#bidInput");
+    const bidAmount = parseFloat(bidInputElement.value);
+
+    bidInputElement.value = "";
 
     if (isNaN(bidAmount) || bidAmount <= highestBid) {
       alert(
@@ -151,6 +153,20 @@ export function updatePageWithListingData(listing) {
       );
       return;
     }
+
+    const handleConfirmBid = async () => {
+      const modalElement = document.getElementById("bidConfirmationModal");
+      const bootstrapModal = new bootstrap.Modal(modalElement);
+      bootstrapModal.hide();
+
+      try {
+        await components.placeBid(listing.id, bidAmount);
+        alert("Your bid was placed successfully!");
+        location.reload();
+      } catch (error) {
+        alert(error.message || "Failed to place bid. Please try again.");
+      }
+    };
 
     if (loggedInUser && highestBidder === loggedInUser.name) {
       const modalElement = document.getElementById("bidConfirmationModal");
@@ -161,18 +177,10 @@ export function updatePageWithListingData(listing) {
       bootstrapModal.show();
 
       const confirmButton = modalElement.querySelector(".btn-confirm");
-      confirmButton.addEventListener("click", async () => {
-        bootstrapModal.hide();
 
-        try {
-          await components.placeBid(listing.id, bidAmount);
-          alert("Your bid was placed successfully!");
-          bidInput.value = "";
-          location.reload();
-        } catch (error) {
-          alert("Failed to place bid. Please try again.");
-        }
-      });
+      confirmButton.removeEventListener("click", handleConfirmBid);
+
+      confirmButton.addEventListener("click", handleConfirmBid);
 
       return;
     }
@@ -182,7 +190,7 @@ export function updatePageWithListingData(listing) {
       alert("Your bid was placed successfully!");
       location.reload();
     } catch (error) {
-      alert("Failed to place bid. Please try again.");
+      alert(error.message || "Failed to place bid. Please try again.");
     }
   });
 }
