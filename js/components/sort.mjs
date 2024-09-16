@@ -1,54 +1,79 @@
 import { getAllListings } from "../api/listings/getAllListings.mjs";
 import * as components from "/js/components/index.mjs";
+import { displayListings } from "../components/displayListings.mjs";
 
 export let listings = [];
 export let currentPage = 1;
 
-export async function sortListings(sortType = "newestListings") {
+export async function sortListings(
+  sortType = "newestListings",
+  page = 1,
+  append = false
+) {
   components.showLoadingIndicator();
 
   try {
-    listings = await getAllListings();
+    if (page === 1) {
+      listings = (await getAllListings()) || [];
+    }
 
     const now = new Date();
     const sortOptionHeader = document.querySelector(".sortOption");
 
+    let sortedListings;
     switch (sortType) {
       case "newestListings":
         sortOptionHeader.textContent = "Listings sorted by most recent";
-        listings = listings.filter((listing) => new Date(listing.endsAt) > now);
-        listings.sort((a, b) => new Date(b.created) - new Date(a.created));
+        sortedListings = listings.filter(
+          (listing) => new Date(listing.endsAt) > now
+        );
+        sortedListings.sort(
+          (a, b) => new Date(b.created) - new Date(a.created)
+        );
         break;
       case "oldestListings":
         sortOptionHeader.textContent = "Listings sorted by oldest first";
-        listings = listings.filter((listing) => new Date(listing.endsAt) > now);
-        listings.sort((a, b) => new Date(a.created) - new Date(b.created));
+        sortedListings = listings.filter(
+          (listing) => new Date(listing.endsAt) > now
+        );
+        sortedListings.sort(
+          (a, b) => new Date(a.created) - new Date(b.created)
+        );
         break;
       case "Alpha-A-Z":
         sortOptionHeader.textContent =
           "Listings in alphabetical order from A-Z";
-        listings = listings.filter((listing) => new Date(listing.endsAt) > now);
-        listings.sort((a, b) => a.title.localeCompare(b.title, "nb"));
+        sortedListings = listings.filter(
+          (listing) => new Date(listing.endsAt) > now
+        );
+        sortedListings.sort((a, b) => a.title.localeCompare(b.title, "nb"));
         break;
       case "Alpha-Z-A":
         sortOptionHeader.textContent =
           "Listings in alphabetical order from Z-A";
-        listings = listings.filter((listing) => new Date(listing.endsAt) > now);
-        listings.sort((a, b) => b.title.localeCompare(a.title, "nb"));
+        sortedListings = listings.filter(
+          (listing) => new Date(listing.endsAt) > now
+        );
+        sortedListings.sort((a, b) => b.title.localeCompare(a.title, "nb"));
         break;
       case "expired":
         sortOptionHeader.textContent = "Expired listings";
-        listings = listings.filter((listing) => new Date(listing.endsAt) < now);
-        listings.sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
+        sortedListings = listings.filter(
+          (listing) => new Date(listing.endsAt) < now
+        );
+        sortedListings.sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
         break;
       default:
         sortOptionHeader.textContent = "Newest listings";
-        listings = listings.filter((listing) => new Date(listing.endsAt) > now);
+        sortedListings = listings.filter(
+          (listing) => new Date(listing.endsAt) > now
+        );
         break;
     }
 
-    currentPage = 1;
-    components.displayListings(listings, currentPage, false);
+    displayListings(sortedListings, page, append);
+
+    currentPage = page;
   } catch (error) {
     console.error("Failed to sort listings:", error);
   } finally {

@@ -1,8 +1,5 @@
-import * as components from "/js/components/index.mjs";
+import { sortListings, currentPage } from "../components/sort.mjs";
 
-export let currentPage = 1;
-
-export function loadMoreListings(listings) {
-  currentPage += 1;
-  components.displayListings(listings, currentPage, true);
+export function loadMoreListings(sortType) {
+  sortListings(sortType, currentPage + 1, true);
 }
