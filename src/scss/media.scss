@@ -9,12 +9,19 @@
 
 .navAvatar{
   width: 70px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .avatar-img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
 }
+
 
 @media (max-width: 991px) {
   .avatar-img {
@@ -67,6 +74,17 @@
 
 .backLink:hover .backArrow {
   transform: scale(1.01);
+}
+
+
+/*---------- Logo ----------*/
+
+.brand-logo{
+    transition: transform 0.3s ease-in-out;
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
 }
 
 
