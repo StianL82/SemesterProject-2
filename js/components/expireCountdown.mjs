@@ -1,5 +1,5 @@
 export function startCountdown(endTime) {
-  const countdownElement = document.querySelector(".text-danger");
+  const countdownElement = document.querySelector(".countdownText");
 
   function updateCountdown() {
     const now = new Date().getTime();
