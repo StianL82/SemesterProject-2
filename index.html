@@ -380,7 +380,7 @@
         </div>
       </div>
 
-      <div class="showIfLoggedInBlock hidden-until-js">
+      <div class="showIfLoggedInBlock hidden-until-js mt-5">
         <h3 class="text-center">Do you want to add a new listing?</h3>
 
         <div class="d-flex justify-content-center">
@@ -596,25 +596,27 @@
       <div class="col-md-12 mb-4">
         <div id="listings">
           <div class="col-md-12 mb-4">
-            <h3 class="sortOption text-black text-center mt-3">
-              <span class="visually-hidden text-black">Sorting option</span>
+            <h3 class="sortOption text-black text-center mt-3 mb-4">
+              <span class="visually-hidden text-black ">Sorting option</span>
             </h3>
 
             <div id="listingCards">
-              <div class="Card-grid container bg-medium-grey rounded-2">
-                <div class="loading-indicator">
-                  <div class="spinner"></div>
-                  <p>Loading...</p>
-                </div>
-                <div id="listings-container" class="row"></div>
-                <div class="d-flex justify-content-center pt-3">
-                  <button
-                    id="loadMoreBtn"
-                    type="button"
-                    class="btn btn-primary my-3"
-                  >
-                    Load More
-                  </button>
+              <div class="container-fluid gradient">
+                <div class="Card-grid container">
+                  <div class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading...</p>
+                  </div>
+                  <div id="listings-container" class="row"></div>
+                  <div class="d-flex justify-content-center pt-3">
+                    <button
+                      id="loadMoreBtn"
+                      type="button"
+                      class="btn btn-primary my-3"
+                    >
+                      Load More
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
