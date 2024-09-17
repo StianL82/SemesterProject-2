@@ -54,7 +54,6 @@ export function createCardTemplate(listingData) {
   overlayContent.classList.add("p-2", "shadow-sm");
   overlayContent.style.width = "fit-content";
 
-  // Sjekk om listingen er utgått
   const isExpired = new Date(endsAt) < new Date();
 
   if (isExpired) {
@@ -68,11 +67,15 @@ export function createCardTemplate(listingData) {
   const expiresLabel = document.createElement("p");
   expiresLabel.classList.add("mb-0");
 
+  const strongElement = document.createElement("strong");
+
   if (isExpired) {
-    expiresLabel.innerHTML = "<strong>Expired:</strong>";
+    strongElement.textContent = "Expired:";
   } else {
-    expiresLabel.innerHTML = "<strong>Expires:</strong>";
+    strongElement.textContent = "Expires:";
   }
+
+  expiresLabel.appendChild(strongElement);
 
   overlayContent.appendChild(expiresLabel);
 
@@ -97,4 +100,3 @@ export function createCardTemplate(listingData) {
 
   return cardCol;
 }
-

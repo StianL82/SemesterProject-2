@@ -285,7 +285,7 @@
       <!-- Karusell i en container -->
       <div class="container my-4">
         <div
-          id="carouselExampleIndicators"
+          id="carouselIndicators"
           class="carousel slide"
           data-bs-ride="false"
         >
@@ -316,7 +316,7 @@
           <button
             class="carousel-control-prev d-none d-md-block"
             type="button"
-            data-bs-target="#carouselExampleIndicators"
+            data-bs-target="#carouselIndicators"
             data-bs-slide="prev"
           >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -325,7 +325,7 @@
           <button
             class="carousel-control-next d-none d-md-block"
             type="button"
-            data-bs-target="#carouselExampleIndicators"
+            data-bs-target="#carouselIndicators"
             data-bs-slide="next"
           >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -336,7 +336,7 @@
           <div class="carousel-indicators">
             <button
               type="button"
-              data-bs-target="#carouselExampleIndicators"
+              data-bs-target="#carouselIndicators"
               data-bs-slide-to="0"
               class="active"
               aria-current="true"
@@ -344,13 +344,13 @@
             ></button>
             <button
               type="button"
-              data-bs-target="#carouselExampleIndicators"
+              data-bs-target="#carouselIndicators"
               data-bs-slide-to="1"
               aria-label="Slide 2"
             ></button>
             <button
               type="button"
-              data-bs-target="#carouselExampleIndicators"
+              data-bs-target="#carouselIndicators"
               data-bs-slide-to="2"
               aria-label="Slide 3"
             ></button>
@@ -611,8 +611,10 @@
     <footer
       class="footer bg-dark d-flex justify-content-center align-items-center flex-column"
     >
-      <div class="d-flex justify-content-center p-3">
-        <a href="/index.html"><img src="/images/logo.png" alt="AuctionHouse logo" /></a>
+      <div class="brand-logo d-flex justify-content-center p-3">
+        <a href="/index.html"
+          ><img src="/images/logo.png" alt="AuctionHouse logo"
+        /></a>
       </div>
       <div class="text-center pb-3">
         <span class="copyright text-white">© 2024 Stian Lilleng</span>
