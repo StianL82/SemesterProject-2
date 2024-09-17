@@ -48,6 +48,18 @@ h4, p, span, .itemData h3 {
 }
 
 
+/*---------- Add Listing Modal ----------*/
+
+#addListingModal .modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+#addListingModal .modal-body {
+  overflow-y: auto;
+}
+
+
 
 /*---------- Other ----------*/
 
