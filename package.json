@@ -1,6 +1,6 @@
 {
   "name": "semesterproject-2",
-  "version": "0.6.8",
+  "version": "0.7.0",
   "description": "This is the repo for my Semester Project 2 at NOROFF",
   "main": "index.js",
   "scripts": {
