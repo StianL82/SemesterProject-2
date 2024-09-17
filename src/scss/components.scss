@@ -42,6 +42,14 @@
   border: none;
 }
 
+.carouselCards .card-title {
+  font-size: 1.1rem;
+  line-height: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .carouselCards .card:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
