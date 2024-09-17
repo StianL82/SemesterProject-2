@@ -180,6 +180,8 @@
                     class="form-control mb-4"
                     id="expiresAt"
                     name="expiresAt"
+                    min=""
+                    onfocus="this.min = new Date().toISOString().split('T')[0]"
                     required
                   />
                 </div>
