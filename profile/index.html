@@ -151,29 +151,30 @@
               <!-- Add new listing form -->
               <form id="addListingForm">
                 <div class="mb-3">
-                  <label for="title" class="mb-2">Title:</label>
+                  <label for="title" class="mb-2">Title: *</label>
                   <input
                     type="text"
                     class="form-control mb-4"
                     id="title"
                     name="title"
+                    placeholder="listing title"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="description" class="mb-2">Description:</label>
+                  <label for="description" class="mb-2">Description: *</label>
                   <textarea
                     class="form-control mb-4"
                     id="description"
                     name="description"
                     maxlength="160"
                     rows="3"
-                    placeholder="Up to 160 characters"
+                    placeholder="up to 160 characters"
                     required
                   ></textarea>
                 </div>
                 <div class="mb-3">
-                  <label for="expiresAt" class="mb-2">Listing Expires:</label>
+                  <label for="expiresAt" class="mb-2">Listing Expires: *</label>
                   <input
                     type="date"
                     class="form-control mb-4"

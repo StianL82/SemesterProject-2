@@ -5,7 +5,11 @@ export async function handleAddListingForm(event) {
 
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
-  const endsAt = document.getElementById("expiresAt").value;
+  let endsAt = document.getElementById("expiresAt").value;
+  const currentDate = new Date().toISOString().split("T")[0];
+  if (endsAt === currentDate) {
+    endsAt += "T23:59:59";
+  }
   const media = [
     {
       url: document.getElementById("media").value,
@@ -63,14 +67,22 @@ export async function handleAddListingForm(event) {
     if (error.response) {
       const errorMessage = await error.response.text();
       if (error.response.status >= 400 && error.response.status < 500) {
-        alert(`Failed to create listing: ${errorMessage}. Please check your input and try again.`);
+        alert(
+          `Failed to create listing: ${errorMessage}. Please check your input and try again.`
+        );
       } else if (error.response.status >= 500) {
-        alert(`Failed to create listing: ${errorMessage}. Please try again later.`);
+        alert(
+          `Failed to create listing: ${errorMessage}. Please try again later.`
+        );
       } else {
-        alert(`An unexpected error occurred: ${errorMessage}. Please try again.`);
+        alert(
+          `An unexpected error occurred: ${errorMessage}. Please try again.`
+        );
       }
     } else {
-      alert("A network error occurred. Please check your connection and try again.");
+      alert(
+        "A network error occurred. Please check your connection and try again."
+      );
     }
   }
 }
@@ -83,4 +95,3 @@ export function setupAddListingForm() {
     }
   });
 }
-

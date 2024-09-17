@@ -131,18 +131,19 @@
               <!-- Login form content -->
               <form id="loginForm">
                 <div class="mb-3">
-                  <label for="loginEmail" class="mb-2">Email:</label>
+                  <label for="loginEmail" class="mb-2">Email: *</label>
                   <input
                     type="email"
                     class="form-control mb-4"
                     id="loginEmail"
                     name="email"
                     title="Only @stud.noroff.no domains are allowed."
+                    autocomplete="email"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="loginPassword" class="mb-2">Password:</label>
+                  <label for="loginPassword" class="mb-2">Password: *</label>
                   <input
                     type="password"
                     class="form-control mb-4"
@@ -150,6 +151,7 @@
                     name="password"
                     title="Must be 6 characters or more."
                     minlength="8"
+                    autocomplete="new-password"
                     required
                   />
                 </div>
@@ -196,22 +198,22 @@
               ></button>
             </div>
             <div class="modal-body bg-light-blue p-3 p-md-5 rounded-3">
-              <!-- Register form content -->
               <form>
                 <div class="mb-3">
-                  <label for="name" class="mb-2">Username:</label>
+                  <label for="name" class="mb-2">Username: *</label>
                   <input
                     type="text"
                     class="form-control mb-4"
                     id="name"
                     name="name"
                     pattern="^[\w]+$"
-                    title="User name must only contain lower case and upper case letters, numbers and underscore (_). Example: My_User123"
+                    title="User name must only contain lower case and upper case letters, numbers, and underscore (_). Example: My_User123"
+                    autocomplete="username"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="email" class="mb-2">Email:</label>
+                  <label for="email" class="mb-2">Email: *</label>
                   <input
                     type="email"
                     class="form-control mb-4"
@@ -219,38 +221,44 @@
                     name="email"
                     pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
                     title="Only @(stud.)noroff.no domains are allowed to register."
+                    autocomplete="email"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="mb-2">Password:</label>
+                  <label for="password" class="mb-2">Password: *</label>
                   <input
                     type="password"
                     class="form-control mb-4"
                     id="password"
                     name="password"
                     minlength="8"
+                    autocomplete="new-password"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="avatar" class="mb-2">Avatar:</label>
+                  <label for="avatar" class="mb-2"
+                    >Avatar: (personal avatar image)</label
+                  >
                   <input
                     type="url"
                     class="form-control mb-4"
                     id="avatar"
                     name="avatar"
-                    placeholder="Optional"
+                    placeholder="must be a valid URL (optional)"
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="avatarAlt" class="mb-2">Avatar Alt Text:</label>
+                  <label for="avatarAlt" class="mb-2 sr-only"
+                    >Avatar Alt Text:</label
+                  >
                   <input
                     type="text"
                     class="form-control mb-4"
                     id="avatarAlt"
                     name="avatar_alt"
-                    placeholder="Optional"
+                    placeholder="add an image description (optional)"
                   />
                 </div>
                 <div class="d-grid gap-2">
@@ -412,34 +420,37 @@
               <!-- Add new listing form -->
               <form id="addListingForm">
                 <div class="mb-3">
-                  <label for="title" class="mb-2">Title:</label>
+                  <label for="title" class="mb-2">Title: *</label>
                   <input
                     type="text"
                     class="form-control mb-4"
                     id="title"
                     name="title"
+                    placeholder="listing title"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="description" class="mb-2">Description:</label>
+                  <label for="description" class="mb-2">Description: *</label>
                   <textarea
                     class="form-control mb-4"
                     id="description"
                     name="description"
                     maxlength="160"
                     rows="3"
-                    placeholder="Up to 160 characters"
+                    placeholder="up to 160 characters"
                     required
                   ></textarea>
                 </div>
                 <div class="mb-3">
-                  <label for="expiresAt" class="mb-2">Listing Expires:</label>
+                  <label for="expiresAt" class="mb-2">Listing Expires: *</label>
                   <input
                     type="date"
                     class="form-control mb-4"
                     id="expiresAt"
                     name="expiresAt"
+                    min=""
+                    onfocus="this.min = new Date().toISOString().split('T')[0]"
                     required
                   />
                 </div>
@@ -463,7 +474,7 @@
                     class="form-control mb-4"
                     id="mediaAlt"
                     name="mediaAlt"
-                    placeholder="add a image description (optional)"
+                    placeholder="add an image description (optional)"
                   />
                 </div>
 
@@ -490,7 +501,7 @@
                     class="form-control mb-4"
                     id="extraMediaAlt1"
                     name="extraMediaAlt1"
-                    placeholder="add a image description (optional)"
+                    placeholder="add an image description (optional)"
                   />
                 </div>
 
@@ -511,7 +522,7 @@
                     class="form-control mb-4"
                     id="extraMediaAlt2"
                     name="extraMediaAlt2"
-                    placeholder="add a image description (optional)"
+                    placeholder="add an image description (optional)"
                   />
                 </div>
 
@@ -532,7 +543,7 @@
                     class="form-control mb-4"
                     id="extraMediaAlt3"
                     name="extraMediaAlt3"
-                    placeholder="add a image description (optional)"
+                    placeholder="add an image description (optional)"
                   />
                 </div>
 
