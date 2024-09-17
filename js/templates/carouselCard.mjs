@@ -1,12 +1,17 @@
-import { calculateDaysLeft } from "/js/components/daysLeft.mjs";
+import { calculateTimeLeft } from "/js/components/calculateTimeLeft.mjs";
 
 export function createCarouselCard(listing) {
   const { id, title, media, endsAt } = listing;
-  const daysLeft = calculateDaysLeft(endsAt);
+  const daysLeft = calculateTimeLeft(endsAt);
 
   const cardCol = document.createElement("div");
-  cardCol.classList.add("col-12", "col-md-6", "col-lg-3", "carouselCards", "mb-3");
-  
+  cardCol.classList.add(
+    "col-12",
+    "col-md-6",
+    "col-lg-3",
+    "carouselCards",
+    "mb-3"
+  );
 
   const link = document.createElement("a");
   link.href = `/listing/index.html?id=${id}`;
@@ -51,7 +56,7 @@ export function createCarouselCard(listing) {
 
   const daysLeftText = document.createElement("p");
   daysLeftText.classList.add("card-text");
-  daysLeftText.textContent = `Expires in ${daysLeft} days`;
+  daysLeftText.textContent = `Expires in ${daysLeft}`;
   cardBody.appendChild(daysLeftText);
 
   return cardCol;

@@ -6,7 +6,7 @@ export * from "./updateAvatar.mjs";
 export * from "./addListing.mjs";
 export * from "./search.mjs";
 export * from "./sort.mjs";
-export * from "./daysLeft.mjs";
+export * from "./calculateTimeLeft.mjs";
 export * from "./hideLoader.mjs";
 export * from "./showLoader.mjs";
 export * from "./displayError.mjs";
