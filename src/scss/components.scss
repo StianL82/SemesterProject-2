@@ -152,6 +152,7 @@
 
 .custom-image-modal .modal-dialog {
   width: 80vw;
+  margin: auto;
 }
 
 .custom-image-modal .modal-content {
@@ -163,7 +164,24 @@
   max-width: 100%;
   max-height: 70vh;
   object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+@media (max-width: 576px) {
+  .custom-image-modal .modal-dialog {
+    width: 90vw;
+  }
+
+  .custom-image-modal .imageModal img {
+    max-width: 100%;
+    max-height: 60vh;
+  }
+}
+
+
+
 
 
 
