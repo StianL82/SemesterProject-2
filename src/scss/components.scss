@@ -159,11 +159,12 @@
   overflow: hidden;
 }
 
-.custom-image-modal #modalImage {
+.custom-image-modal .imageModal img {
   max-width: 100%;
   max-height: 70vh;
   object-fit: contain;
 }
+
 
 
 /*---------- Loader/Spinner ----------*/

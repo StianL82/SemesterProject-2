@@ -1,7 +1,14 @@
 export function openImageModal(imageSrc, imageAlt) {
-  const modalImage = document.getElementById("modalImage");
+  const modalBody = document.querySelector(".imageModal");
+
+  modalBody.innerHTML = "";
+
+  const modalImage = document.createElement("img");
   modalImage.src = imageSrc;
-  modalImage.alt = imageAlt;
+  modalImage.alt = imageAlt || "Full-size image";
+  modalImage.classList.add("img-fluid");
+
+  modalBody.appendChild(modalImage);
 
   const modalTitle = document.getElementById("imageModalLabel");
   modalTitle.textContent = imageAlt || "Full-size Image";
