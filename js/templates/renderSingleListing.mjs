@@ -19,16 +19,24 @@ export function renderSingleListing(listing) {
   } else {
     descriptionElement.textContent = "No description added";
   }
-  
 
   const mainImage = document.querySelector(".main-listing-image");
+
   if (listing.media && listing.media.length > 0) {
     mainImage.src = listing.media[0].url;
     mainImage.alt = listing.media[0].alt || `Listing image of ${listing.title}`;
+
+    mainImage.onload = () => {
+      mainImage.style.visibility = "visible";
+    };
   } else {
     mainImage.src =
       "https://plus.unsplash.com/premium_photo-1667539633338-5b7afd626193?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     mainImage.alt = "Placeholder image for the listing";
+
+    mainImage.onload = () => {
+      mainImage.style.visibility = "visible";
+    };
   }
 
   const extraImageContainer = document.querySelector(".extraImageContainer");
