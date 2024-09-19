@@ -5,8 +5,10 @@ export function renderSingleListing(listing) {
   const sellerName = listing.seller.name;
 
   const bidInputGroup = document.querySelector(".input-group");
+  const makeOfferLabel = document.querySelector(".makeoffer");
   if (loggedInUser && loggedInUser.name === sellerName) {
     bidInputGroup.style.display = "none";
+    makeOfferLabel.style.display = "none";
   }
 
   const titleElement = document.querySelector(".itemTitle");
