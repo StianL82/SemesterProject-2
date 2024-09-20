@@ -1,4 +1,4 @@
-# JavaScript 2 CA
+# Semester Project 2
 
 ## AuctionHouse
 
