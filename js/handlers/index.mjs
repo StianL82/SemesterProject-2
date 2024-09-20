@@ -5,3 +5,8 @@ export * from "./checkLoginStatus.mjs";
 export * from "./searchListings.mjs";
 export * from "./sortListener.mjs";
 export * from "./addListingListener.mjs";
+export * from "./validateLoginForm.mjs";
+export * from "./validateRegisterForm.mjs";
+export * from "./validateEmail.mjs";
+export * from "./validatePassword.mjs";
+export * from "./validateUsername.mjs";

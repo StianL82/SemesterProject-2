@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -132,10 +132,12 @@
                     class="form-control mb-4"
                     id="loginEmail"
                     name="email"
-                    title="Only @stud.noroff.no domains are allowed."
-                    autocomplete="email"
                     required
                   />
+                  <div
+                    class="error-message"
+                    id="loginEmailError"
+                  ></div>
                 </div>
                 <div class="mb-3">
                   <label for="loginPassword" class="mb-2">Password: *</label>
@@ -144,11 +146,12 @@
                     class="form-control mb-4"
                     id="loginPassword"
                     name="password"
-                    title="Must be 6 characters or more."
-                    minlength="8"
-                    autocomplete="new-password"
                     required
                   />
+                  <div
+                    class="error-message"
+                    id="loginPasswordError"
+                  ></div>
                 </div>
                 <div class="d-grid gap-2">
                   <button type="submit" class="btn btn-warning">Login</button>
@@ -171,7 +174,7 @@
         </div>
       </div>
 
-      <!--Register Modal-->
+      <!-- Register Modal -->
       <div
         class="modal fade"
         id="signupModal"
@@ -193,7 +196,7 @@
               ></button>
             </div>
             <div class="modal-body bg-light-blue p-3 p-md-5 rounded-3">
-              <form>
+              <form id="registerForm">
                 <div class="mb-3">
                   <label for="name" class="mb-2">Username: *</label>
                   <input
@@ -206,6 +209,7 @@
                     autocomplete="username"
                     required
                   />
+                  <div class="form-error" id="usernameError"></div>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="mb-2">Email: *</label>
@@ -219,6 +223,7 @@
                     autocomplete="email"
                     required
                   />
+                  <div class="form-error" id="emailError"></div>
                 </div>
                 <div class="mb-3">
                   <label for="password" class="mb-2">Password: *</label>
@@ -231,6 +236,7 @@
                     autocomplete="new-password"
                     required
                   />
+                  <div class="form-error" id="passwordError"></div>
                 </div>
                 <div class="mb-3">
                   <label for="avatar" class="mb-2"

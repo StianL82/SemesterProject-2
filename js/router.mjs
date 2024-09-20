@@ -18,6 +18,8 @@ export function router() {
       handlers.setupSearchListener();
       handlers.setupAddListingForm();
       handlers.setupSortListener();
+      handlers.validateLoginForm();
+      handlers.validateRegisterForm();
       templates.setupCarousel().then(() => {
         components.loadInitialListings();
       });
@@ -51,6 +53,8 @@ export function router() {
       handlers.checkLoginStatus();
       templates.initListingPage();
       templates.renderNavProfile();
+      handlers.validateLoginForm();
+      handlers.validateRegisterForm();
       break;
 
     // Profile Page
