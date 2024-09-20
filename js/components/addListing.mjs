@@ -60,6 +60,7 @@ export async function handleAddListingForm(event) {
       modal.hide();
 
       alert("Listing created successfully");
+      window.location.reload();
     }
   } catch (error) {
     console.error("Failed to create listing:", error);
@@ -68,20 +69,20 @@ export async function handleAddListingForm(event) {
       const errorMessage = await error.response.text();
       if (error.response.status >= 400 && error.response.status < 500) {
         alert(
-          `Failed to create listing: ${errorMessage}. Please check your input and try again.`
+          `Failed to create listing: ${errorMessage}. Please check your input and try again.`,
         );
       } else if (error.response.status >= 500) {
         alert(
-          `Failed to create listing: ${errorMessage}. Please try again later.`
+          `Failed to create listing: ${errorMessage}. Please try again later.`,
         );
       } else {
         alert(
-          `An unexpected error occurred: ${errorMessage}. Please try again.`
+          `An unexpected error occurred: ${errorMessage}. Please try again.`,
         );
       }
     } else {
       alert(
-        "A network error occurred. Please check your connection and try again."
+        "A network error occurred. Please check your connection and try again.",
       );
     }
   }
