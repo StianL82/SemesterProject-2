@@ -16,7 +16,7 @@ In this semester project, we were tasked with building an auction website where 
 
 This project is a front-end application for an auction platform, where registered users can create listings and participate in auctions. Users receive 1000 credits upon registration, which they can use to bid on items or earn by selling their own items. While non-registered users can browse through the listings, only registered users are allowed to place bids. The site is designed with a focus on usability, and it integrates seamlessly with the provided API.
 
-Required features was:
+### Required features was:
 
 - User with @noroff.no or @stud.noroff.no email can register profile
 - User login/logout functionality
@@ -48,7 +48,8 @@ git clone git@github.com/StianL82/SemesterProject-2
 ### Running
 
 To run the git version, you will have to use npm install and npm run dev.
-[Link to page](https://semester-project-2-stianl.netlify.app/)
+
+[Link to Netlifypage](https://semester-project-2-stianl.netlify.app/)
 
 ### Contributing
 
