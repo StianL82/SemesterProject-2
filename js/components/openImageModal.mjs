@@ -14,12 +14,12 @@ export function openImageModal(imageSrc, imageAlt) {
   modalTitle.textContent = imageAlt || "Full-size Image";
 
   const bootstrapModal = new bootstrap.Modal(
-    document.getElementById("imageModal")
+    document.getElementById("imageModal"),
   );
   bootstrapModal.show();
 }
 
-export function enableImageModal(listing) {
+export function enableImageModal() {
   const mainImage = document.querySelector(".main-listing-image");
   mainImage.addEventListener("click", () => {
     openImageModal(mainImage.src, mainImage.alt);

@@ -23,7 +23,7 @@ export async function placeBid(listingId, bidAmount) {
 
     if (bidAmount > currentCredits) {
       throw new Error(
-        `Insufficient credits. You have ${currentCredits} credits available.`
+        `Insufficient credits. You have ${currentCredits} credits available.`,
       );
     }
 
@@ -36,7 +36,6 @@ export async function placeBid(listingId, bidAmount) {
     });
 
     if (!response.ok) {
-      const errorResponse = await response.json();
       throw new Error("Failed to place bid. Make sure your bid is valid.");
     }
 

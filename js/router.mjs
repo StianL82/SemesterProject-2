@@ -9,7 +9,7 @@ export function router() {
     // Main Page
     case "/":
     case "/index":
-    case "/index.html":
+    case "/index.html": {
       handlers.setRegisterFormListener();
       handlers.setLoginFormListener();
       handlers.setupLogoutButton();
@@ -27,7 +27,7 @@ export function router() {
         loadMoreBtn.addEventListener("click", components.loadMoreListings);
       }
 
-      window.addEventListener("popstate", (event) => {
+      window.addEventListener("popstate", () => {
         if (
           window.location.pathname === "/" ||
           window.location.pathname === "/index.html"
@@ -39,7 +39,7 @@ export function router() {
         }
       });
       break;
-
+    }
     // Listing Page
     case "/listing":
     case "/listing/":
