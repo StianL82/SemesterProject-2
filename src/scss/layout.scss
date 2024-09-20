@@ -60,7 +60,6 @@ h4, p, span, .itemData h3 {
 }
 
 
-
 /*---------- Other ----------*/
 
 .bidContainer {
@@ -74,6 +73,6 @@ h4, p, span, .itemData h3 {
 
 .form-error, #loginEmailError, #loginPasswordError {
   display: none;
-  color: red;
+  color: var(--color-countdown-red);
 }
 
