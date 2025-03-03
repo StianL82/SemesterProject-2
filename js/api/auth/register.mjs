@@ -28,7 +28,7 @@ export async function register(profile) {
       alert("Registration successful! Please log in to continue.");
 
       const signupModal = bootstrap.Modal.getInstance(
-        document.getElementById("signupModal")
+        document.getElementById("signupModal"),
       );
       if (signupModal) {
         signupModal.hide();
@@ -50,12 +50,12 @@ export async function register(profile) {
       if (response.status >= 400 && response.status < 500) {
         console.error("Client error:", errorMessage);
         alert(
-          `Registration failed: ${errorMessage}. Please check your input and try again.`
+          `Registration failed: ${errorMessage}. Please check your input and try again.`,
         );
       } else if (response.status >= 500) {
         console.error("Server error:", errorMessage);
         alert(
-          "Registration failed due to a server error. Please try again later."
+          "Registration failed due to a server error. Please try again later.",
         );
       } else {
         console.error("Unexpected error:", errorMessage);
@@ -65,7 +65,7 @@ export async function register(profile) {
   } catch (error) {
     console.error("Network error or unexpected error:", error);
     alert(
-      "An unexpected error occurred while trying to register. Please check your connection and try again."
+      "An unexpected error occurred while trying to register. Please check your connection and try again.",
     );
   }
 }

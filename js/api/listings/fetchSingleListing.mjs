@@ -13,12 +13,12 @@ export async function fetchListingData(id) {
       if (response.status >= 400 && response.status < 500) {
         console.error(`Client error: ${errorMessage}`);
         throw new Error(
-          `Failed to fetch listing due to a client error: ${errorMessage}`
+          `Failed to fetch listing due to a client error: ${errorMessage}`,
         );
       } else if (response.status >= 500) {
         console.error(`Server error: ${errorMessage}`);
         throw new Error(
-          `Failed to fetch listing due to a server error. Please try again later.`
+          `Failed to fetch listing due to a server error. Please try again later.`,
         );
       } else {
         throw new Error(`Unexpected error: ${errorMessage}`);

@@ -22,12 +22,12 @@ export async function createListing(postData) {
       if (response.status >= 400 && response.status < 500) {
         console.error("Client error while creating listing:", errorMessage);
         alert(
-          "Failed to create listing. Please check your input and try again."
+          "Failed to create listing. Please check your input and try again.",
         );
       } else if (response.status >= 500) {
         console.error("Server error while creating listing:", errorMessage);
         alert(
-          "Failed to create listing due to a server error. Please try again later."
+          "Failed to create listing due to a server error. Please try again later.",
         );
       } else {
         console.error("Unexpected error while creating listing:", errorMessage);
@@ -41,10 +41,10 @@ export async function createListing(postData) {
   } catch (error) {
     console.error(
       "Network error or unexpected error while creating the listing:",
-      error
+      error,
     );
     alert(
-      "A network error occurred. Please check your internet connection and try again."
+      "A network error occurred. Please check your internet connection and try again.",
     );
     return null;
   }

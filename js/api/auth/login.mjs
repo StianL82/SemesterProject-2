@@ -39,7 +39,7 @@ export async function login(profile) {
       }
     } else {
       const errorMessage = await response.text();
-      
+
       if (response.status >= 400 && response.status < 500) {
         console.error("Client error:", errorMessage);
         alert("Login failed. Please check your email and password.");
@@ -53,7 +53,8 @@ export async function login(profile) {
     }
   } catch (error) {
     console.error("Network error:", error);
-    alert("Network error. Please check your internet connection and try again.");
+    alert(
+      "Network error. Please check your internet connection and try again.",
+    );
   }
 }
-

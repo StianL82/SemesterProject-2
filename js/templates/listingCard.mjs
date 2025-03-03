@@ -46,7 +46,7 @@ export function createCardTemplate(listingData) {
     "card-img-overlay",
     "d-flex",
     "flex-column",
-    "justify-content-center"
+    "justify-content-center",
   );
   card.appendChild(cardOverlay);
 

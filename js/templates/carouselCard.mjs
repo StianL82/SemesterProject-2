@@ -10,7 +10,7 @@ export function createCarouselCard(listing) {
     "col-md-6",
     "col-lg-3",
     "carouselCards",
-    "mb-3"
+    "mb-3",
   );
 
   const link = document.createElement("a");

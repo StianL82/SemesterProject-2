@@ -25,7 +25,7 @@ export async function renderNavProfile() {
     "userAvatar",
     "navAvatar",
     "rounded-circle",
-    "mb-1"
+    "mb-1",
   );
   avatarElement.alt = "The profile image of the logged-in user";
   avatarElement.title = "Profile Page";
@@ -42,17 +42,19 @@ export async function renderNavProfile() {
   try {
     const profileUrl = `${API_AUCTION_URL}/profiles/${user.name}`;
     const response = await authFetch(profileUrl);
-    
+
     if (!response.ok) {
       const errorMessage = await response.text();
       if (response.status >= 400 && response.status < 500) {
         console.error("Client error:", errorMessage);
         throw new Error(
-          "Failed to fetch profile information. Please check your input and try again."
+          "Failed to fetch profile information. Please check your input and try again.",
         );
       } else if (response.status >= 500) {
         console.error("Server error:", errorMessage);
-        throw new Error("We're experiencing server issues. Please try again later.");
+        throw new Error(
+          "We're experiencing server issues. Please try again later.",
+        );
       } else {
         throw new Error("An unexpected error occurred. Please try again.");
       }
@@ -77,4 +79,3 @@ export async function renderNavProfile() {
     avatarElement.style.visibility = "visible";
   }
 }
-

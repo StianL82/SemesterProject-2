@@ -19,35 +19,35 @@ export async function getListingsWithShortestDeadline() {
       if (error.response.status >= 400 && error.response.status < 500) {
         console.error(
           "Client error in getListingsWithShortestDeadline:",
-          errorMessage
+          errorMessage,
         );
         alert(
-          "Failed to fetch listings. Please check your input and try again."
+          "Failed to fetch listings. Please check your input and try again.",
         );
       } else if (error.response.status >= 500) {
         console.error(
           "Server error in getListingsWithShortestDeadline:",
-          errorMessage
+          errorMessage,
         );
         alert(
-          "Failed to fetch listings due to server error. Please try again later."
+          "Failed to fetch listings due to server error. Please try again later.",
         );
       } else {
         console.error(
           "Unexpected error in getListingsWithShortestDeadline:",
-          errorMessage
+          errorMessage,
         );
         alert(
-          "Something went wrong while fetching listings. Please try again."
+          "Something went wrong while fetching listings. Please try again.",
         );
       }
     } else {
       console.error(
         "Network or unexpected error in getListingsWithShortestDeadline:",
-        error
+        error,
       );
       alert(
-        "Network error. Please check your internet connection and try again."
+        "Network error. Please check your internet connection and try again.",
       );
     }
   }

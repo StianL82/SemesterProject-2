@@ -41,7 +41,7 @@ export async function setupCarousel() {
 
     if (error.message === "Failed to fetch") {
       alert(
-        "Network error. Please check your internet connection and try again."
+        "Network error. Please check your internet connection and try again.",
       );
     } else if (
       error.response &&
@@ -57,7 +57,7 @@ export async function setupCarousel() {
 
     const carouselContainer = document.querySelector(".carousel-inner");
     const errorMessage = components.displayError(
-      "We are having trouble fetching the information from the API"
+      "We are having trouble fetching the information from the API",
     );
     carouselContainer.innerHTML = "";
     carouselContainer.appendChild(errorMessage);

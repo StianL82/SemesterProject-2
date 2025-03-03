@@ -100,7 +100,7 @@ export function renderSingleListing(listing) {
       endedMessage.classList.add("alert", "alert-warning", "text-center");
 
       const showIfLoggedInBlock = document.querySelector(
-        ".showIfLoggedInBlock"
+        ".showIfLoggedInBlock",
       );
       if (showIfLoggedInBlock) {
         showIfLoggedInBlock.appendChild(endedMessage);
@@ -172,7 +172,7 @@ export function renderSingleListing(listing) {
 
     if (isNaN(bidAmount) || bidAmount <= highestBid) {
       alert(
-        `Bid must be higher than the current highest bid of ${highestBid}.`
+        `Bid must be higher than the current highest bid of ${highestBid}.`,
       );
       return;
     }

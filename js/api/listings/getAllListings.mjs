@@ -21,20 +21,20 @@ export async function getAllListings() {
         if (response.status >= 400 && response.status < 500) {
           console.error("Client error while fetching listings:", errorMessage);
           alert(
-            "Failed to fetch listings. Please check your input and try again."
+            "Failed to fetch listings. Please check your input and try again.",
           );
         } else if (response.status >= 500) {
           console.error("Server error while fetching listings:", errorMessage);
           alert(
-            "Failed to fetch listings due to server error. Please try again later."
+            "Failed to fetch listings due to server error. Please try again later.",
           );
         } else {
           console.error(
             "Unexpected error while fetching listings:",
-            errorMessage
+            errorMessage,
           );
           alert(
-            "An unexpected error occurred while fetching listings. Please try again."
+            "An unexpected error occurred while fetching listings. Please try again.",
           );
         }
         return null;
@@ -54,10 +54,10 @@ export async function getAllListings() {
   } catch (error) {
     console.error(
       "Network error or unexpected error while fetching all listings:",
-      error
+      error,
     );
     alert(
-      "A network error occurred. Please check your internet connection and try again."
+      "A network error occurred. Please check your internet connection and try again.",
     );
     return null;
   }

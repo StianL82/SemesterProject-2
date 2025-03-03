@@ -4,7 +4,7 @@ import { createCardTemplate } from "../templates/listingCard.mjs";
 export async function searchListings(query) {
   try {
     const searchResults = await searchListingsFromAPI(query);
-    
+
     if (!searchResults) return;
 
     const listings = searchResults.data || [];
@@ -30,4 +30,3 @@ export async function searchListings(query) {
     alert("An error occurred while fetching the search results.");
   }
 }
-

@@ -19,12 +19,12 @@ export async function renderProfileInformation() {
       if (response.status >= 400 && response.status < 500) {
         console.error("Client error:", errorMessage);
         throw new Error(
-          "Failed to fetch profile information. Please check your input and try again."
+          "Failed to fetch profile information. Please check your input and try again.",
         );
       } else if (response.status >= 500) {
         console.error("Server error:", errorMessage);
         throw new Error(
-          "We're experiencing server issues. Please try again later."
+          "We're experiencing server issues. Please try again later.",
         );
       } else {
         throw new Error("An unexpected error occurred. Please try again.");
@@ -36,28 +36,27 @@ export async function renderProfileInformation() {
     const creditsElement = document.querySelector(".profile-credits");
     const emailElement = document.querySelector(".profile-email");
     const usernameElement = document.querySelector(".profile-username");
-    
+
     if (creditsElement) {
       const strongCredits = document.createElement("strong");
       strongCredits.textContent = "My Credits: ";
       creditsElement.appendChild(strongCredits);
-      creditsElement.append(data.credits); // Legg til dynamisk verdi
+      creditsElement.append(data.credits);
     }
-    
+
     if (emailElement) {
       const strongEmail = document.createElement("strong");
       strongEmail.textContent = "E-mail: ";
       emailElement.appendChild(strongEmail);
-      emailElement.append(data.email); // Legg til dynamisk verdi
+      emailElement.append(data.email);
     }
-    
+
     if (usernameElement) {
       const strongUsername = document.createElement("strong");
       strongUsername.textContent = "Username: ";
       usernameElement.appendChild(strongUsername);
-      usernameElement.append(data.name); // Legg til dynamisk verdi
+      usernameElement.append(data.name);
     }
-    
 
     const avatarElement = document.querySelector(".profile-avatar");
     avatarElement.style.visibility = "hidden";
