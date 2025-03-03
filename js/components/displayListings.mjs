@@ -1,5 +1,12 @@
 import { createCardTemplate } from "../templates/listingCard.mjs";
 
+/**
+ * Displays a paginated list of listings inside the container element.
+ *
+ * @param {Array<Object>} sortedListings - An array of sorted listing objects to display.
+ * @param {number} [page=1] - The current page number.
+ * @param {boolean} [append=false] - Whether to append new listings or replace existing ones.
+ */
 export function displayListings(sortedListings, page = 1, append = false) {
   const container = document.getElementById("listings-container");
 

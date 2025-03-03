@@ -1,3 +1,9 @@
+/**
+ * Opens an image modal displaying a full-size version of the selected image.
+ *
+ * @param {string} imageSrc - The source URL of the image to display.
+ * @param {string} [imageAlt="Full-size image"] - The alt text for the image.
+ */
 export function openImageModal(imageSrc, imageAlt) {
   const modalBody = document.querySelector(".imageModal");
 
@@ -19,6 +25,10 @@ export function openImageModal(imageSrc, imageAlt) {
   bootstrapModal.show();
 }
 
+/**
+ * Enables the image modal functionality by attaching click event listeners
+ * to the main listing image and extra images.
+ */
 export function enableImageModal() {
   const mainImage = document.querySelector(".main-listing-image");
   mainImage.addEventListener("click", () => {

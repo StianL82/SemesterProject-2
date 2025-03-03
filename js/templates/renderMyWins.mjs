@@ -4,6 +4,14 @@ import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
 import * as components from "/js/components/index.mjs";
 
+/**
+ * Fetches and displays the logged-in user's won listings.
+ * Handles errors and displays appropriate messages if fetching fails.
+ *
+ * @returns {Promise<void>} A promise that resolves once the user's won listings are fetched and displayed.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
 let isFetchingWins = false;
 
 async function renderMyWins() {

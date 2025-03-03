@@ -1,6 +1,15 @@
 import { API_AUCTION_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
+/**
+ * Searches for listings in the API based on a given query.
+ *
+ * @param {string} query - The search query string.
+ * @returns {Promise<Object|null>} A promise that resolves to the search results object if successful, or null if an error occurs.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
+
 const searchAction = "/listings/search";
 
 export async function searchListingsFromAPI(query) {

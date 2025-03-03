@@ -2,6 +2,17 @@ import * as storage from "../../storage/index.mjs";
 import * as components from "../../components/index.mjs";
 import { API_HOST_URL } from "../constants.mjs";
 
+/**
+ * Registers a new user by sending a POST request to the API.
+ *
+ * @param {Object} profile - The user's registration data.
+ * @param {string} profile.name - The user's name.
+ * @param {string} profile.email - The user's email address.
+ * @param {string} profile.password - The user's password.
+ * @returns {Promise<void>} No return value, but handles profile storage and UI updates on successful registration.
+ *
+ * @throws {Error} Displays an error message if the registration fails.
+ */
 const action = "/auth/register";
 const method = "post";
 

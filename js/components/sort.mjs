@@ -2,6 +2,16 @@ import { getAllListings } from "../api/listings/getAllListings.mjs";
 import * as components from "/js/components/index.mjs";
 import { displayListings } from "../components/displayListings.mjs";
 
+/**
+ * Sorts and displays listings based on the selected sorting type.
+ *
+ * @param {string} [sortType="newestListings"] - The sorting type (e.g., "newestListings", "oldestListings", "Alpha-A-Z", "Alpha-Z-A", "expired").
+ * @param {number} [page=1] - The current page number for pagination.
+ * @param {boolean} [append=false] - Whether to append new listings or replace existing ones.
+ * @returns {Promise<void>} A promise that resolves once the sorted listings are displayed.
+ *
+ * @throws {Error} Logs an error message if sorting or fetching listings fails.
+ */
 export let listings = [];
 export let currentPage = 1;
 

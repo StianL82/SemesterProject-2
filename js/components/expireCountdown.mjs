@@ -1,3 +1,8 @@
+/**
+ * Starts a countdown timer displaying the time remaining until the specified end time.
+ *
+ * @param {string} endTime - The end date and time in ISO format.
+ */
 export function startCountdown(endTime) {
   const countdownElement = document.querySelector(".countdownText");
 

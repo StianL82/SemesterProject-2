@@ -1,5 +1,15 @@
 import { calculateTimeLeft } from "/js/components/calculateTimeLeft.mjs";
 
+/**
+ * Creates a carousel card element for a listing.
+ *
+ * @param {Object} listing - The listing data.
+ * @param {string} listing.id - The unique identifier of the listing.
+ * @param {string} listing.title - The title of the listing.
+ * @param {Array<Object>} listing.media - An array of media objects containing image URLs.
+ * @param {string} listing.endsAt - The expiration date of the listing in ISO format.
+ * @returns {HTMLElement} A `div` element representing the carousel card.
+ */
 export function createCarouselCard(listing) {
   const { id, title, media, endsAt } = listing;
   const daysLeft = calculateTimeLeft(endsAt);

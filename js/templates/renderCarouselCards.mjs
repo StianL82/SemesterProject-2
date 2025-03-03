@@ -2,6 +2,14 @@ import { getListingsWithShortestDeadline } from "/js/api/listings/carouselListin
 import { createCarouselCard } from "./carouselCard.mjs";
 import * as components from "/js/components/index.mjs";
 
+/**
+ * Sets up the carousel by fetching listings with the shortest deadline and rendering them into slides.
+ * Displays a loading indicator while fetching data and handles errors if the request fails.
+ *
+ * @returns {Promise<void>} A promise that resolves once the carousel is populated.
+ *
+ * @throws {Error} Displays an alert if fetching listings fails due to network issues, client errors, or server errors.
+ */
 export async function setupCarousel() {
   components.showLoadingIndicator();
 

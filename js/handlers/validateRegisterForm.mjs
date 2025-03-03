@@ -2,6 +2,11 @@ import { validateEmail } from "./validateEmail.mjs";
 import { validatePassword } from "./validatePassword.mjs";
 import { validateUsername } from "./validateUsername.mjs";
 
+/**
+ * Sets up validation for the registration form fields.
+ * Listens for blur events on the name, email, and password fields to trigger validation.
+ * Resets error messages on page load.
+ */
 export function validateRegisterForm() {
   document.addEventListener("DOMContentLoaded", function () {
     resetErrors();

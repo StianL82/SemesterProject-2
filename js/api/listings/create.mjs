@@ -1,6 +1,18 @@
 import { API_AUCTION_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
+/**
+ * Creates a new listing by sending a POST request to the API.
+ *
+ * @param {Object} postData - The data for the new listing.
+ * @param {string} postData.title - The title of the listing.
+ * @param {string} postData.description - The description of the listing.
+ * @param {number} postData.price - The price of the listing.
+ * @param {string} postData.endsAt - The end date and time for the listing in ISO format.
+ * @returns {Promise<Object|null>} A promise that resolves to the created listing object if successful, or null if an error occurs.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
 const action = "/listings";
 const method = "post";
 

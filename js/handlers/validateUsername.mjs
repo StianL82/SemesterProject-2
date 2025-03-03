@@ -1,3 +1,9 @@
+/**
+ * Validates a username input field to ensure it contains only letters, numbers, and underscores.
+ *
+ * @param {HTMLInputElement} nameInput - The username input field to validate.
+ * @param {HTMLElement} nameError - The element where validation errors will be displayed.
+ */
 export function validateUsername(nameInput, nameError) {
   if (nameInput.value === "") {
     nameError.style.display = "none";

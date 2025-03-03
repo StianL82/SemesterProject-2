@@ -1,6 +1,14 @@
 import { searchListingsFromAPI } from "../api/listings/search.mjs";
 import { createCardTemplate } from "../templates/listingCard.mjs";
 
+/**
+ * Searches for listings based on a query and displays the results.
+ *
+ * @param {string} query - The search query string.
+ * @returns {Promise<void>} A promise that resolves when the search results are displayed.
+ *
+ * @throws {Error} Displays an error message if fetching search results fails.
+ */
 export async function searchListings(query) {
   try {
     const searchResults = await searchListingsFromAPI(query);

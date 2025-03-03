@@ -4,6 +4,15 @@ import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
 import * as components from "/js/components/index.mjs";
 
+/**
+ * Fetches and displays the logged-in user's active bids.
+ * Ensures that only ongoing listings are shown and prevents duplicate listings.
+ * Handles errors and displays appropriate messages if fetching fails.
+ *
+ * @returns {Promise<void>} A promise that resolves once the active bids are fetched and displayed.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
 let isFetchingBids = false;
 
 async function renderMyActiveBids() {

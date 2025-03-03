@@ -1,5 +1,12 @@
 import { getAllListings } from "./getAllListings.mjs";
 
+/**
+ * Retrieves listings with the shortest remaining time until their deadline.
+ *
+ * @returns {Promise<Array<Object>>} A promise that resolves to an array of up to 12 listings sorted by the earliest deadline.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
 export async function getListingsWithShortestDeadline() {
   try {
     let listings = await getAllListings();

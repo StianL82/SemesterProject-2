@@ -1,5 +1,9 @@
 import { login } from "../api/auth/login.mjs";
 
+/**
+ * Sets up an event listener for the login form submission.
+ * Prevents default form submission, extracts form data, and calls the `login` function.
+ */
 export function setLoginFormListener() {
   const form = document.querySelector("#loginForm");
 

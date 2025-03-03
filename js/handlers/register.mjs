@@ -1,5 +1,9 @@
 import { register } from "../api/auth/register.mjs";
 
+/**
+ * Sets up an event listener for the registration form submission.
+ * Prevents default form submission, processes the form data, and calls the `register` function to create a new user.
+ */
 export function setRegisterFormListener() {
   const form = document.querySelector("#signupModal form");
 

@@ -1,5 +1,24 @@
 import * as components from "/js/components/index.mjs";
 
+/**
+ * Renders the details of a single listing on the page.
+ * Displays listing title, description, images, seller information, bid history, and expiration details.
+ * Handles UI updates for logged-in users, sellers, and bidders.
+ *
+ * @param {Object} listing - The listing data.
+ * @param {string} listing.id - The unique identifier of the listing.
+ * @param {string} listing.title - The title of the listing.
+ * @param {string} listing.description - The description of the listing.
+ * @param {Array<Object>} listing.media - An array of media objects containing image URLs and alt text.
+ * @param {Object} listing.seller - The seller's information.
+ * @param {string} listing.seller.name - The username of the seller.
+ * @param {string} listing.endsAt - The expiration date of the listing in ISO format.
+ * @param {string} listing.created - The creation date of the listing in ISO format.
+ * @param {Array<Object>} listing.bids - An array of bid objects with bidder details and amounts.
+ * @param {Object} listing._count - The count object containing bid count.
+ *
+ * @returns {void} This function does not return anything but updates the UI dynamically.
+ */
 export function renderSingleListing(listing) {
   const loggedInUser = components.getLoggedInUser();
   const sellerName = listing.seller.name;

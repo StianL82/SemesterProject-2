@@ -2,6 +2,15 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 
+/**
+ * Places a bid on a listing after verifying the user's available credits.
+ *
+ * @param {string} listingId - The ID of the listing to place a bid on.
+ * @param {number} bidAmount - The amount of credits to bid.
+ * @returns {Promise<Object>} A promise that resolves to the bid response object if successful.
+ *
+ * @throws {Error} Throws an error if the user is not logged in, has insufficient credits, or if the bid request fails.
+ */
 export async function placeBid(listingId, bidAmount) {
   const bidUrl = `${API_AUCTION_URL}/listings/${listingId}/bids?timestamp=${new Date().getTime()}`;
 

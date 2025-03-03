@@ -1,5 +1,9 @@
 import * as storage from "../storage/index.mjs";
 
+/**
+ * Sets up an event listener for the logout button.
+ * Clears the stored authentication token and user profile, updates the UI, and redirects to the homepage.
+ */
 export function setupLogoutButton() {
   const logoutButton = document.querySelector(".logoutButton");
 

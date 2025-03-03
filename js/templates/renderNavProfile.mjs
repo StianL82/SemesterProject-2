@@ -2,6 +2,15 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 
+/**
+ * Renders the logged-in user's profile avatar and credits in the navigation bar.
+ * Fetches the user's profile data, including their avatar and available credits.
+ * Handles errors by displaying a default avatar if fetching fails.
+ *
+ * @returns {Promise<void>} A promise that resolves once the profile information is displayed.
+ *
+ * @throws {Error} Logs an error if the profile data cannot be fetched due to network issues, client errors, or server errors.
+ */
 export async function renderNavProfile() {
   const user = getLoggedInUser();
 

@@ -1,5 +1,9 @@
 import * as storage from "../storage/index.mjs";
 
+/**
+ * Checks if the user is logged in by verifying the presence of a token in storage.
+ * Updates the visibility of elements based on the user's login status.
+ */
 export function checkLoginStatus() {
   const token = storage.load("token");
 

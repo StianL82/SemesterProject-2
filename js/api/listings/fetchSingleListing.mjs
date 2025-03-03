@@ -1,6 +1,14 @@
 import { API_AUCTION_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
+/**
+ * Fetches listing data from the API for a given listing ID.
+ *
+ * @param {string} id - The unique identifier of the listing.
+ * @returns {Promise<Object>} A promise that resolves to the listing data, including seller and bid information.
+ *
+ * @throws {Error} Throws an error if the request fails due to network issues, client errors, or server errors.
+ */
 export async function fetchListingData(id) {
   const listingUrl = `${API_AUCTION_URL}/listings/${id}?_seller=true&_bids=true`;
 

@@ -1,6 +1,16 @@
 import { API_HOST_URL } from "../constants.mjs";
 import * as storage from "../../storage/index.mjs";
 
+/**
+ * Logs in a user by sending a POST request to the API.
+ *
+ * @param {Object} profile - The user's login credentials.
+ * @param {string} profile.email - The user's email address.
+ * @param {string} profile.password - The user's password.
+ * @returns {Promise<void>} No return value, but handles token and profile storage on successful login.
+ *
+ * @throws {Error} Displays an error message if the login fails.
+ */
 const action = "/auth/login";
 const method = "post";
 

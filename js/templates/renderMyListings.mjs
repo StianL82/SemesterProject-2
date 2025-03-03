@@ -4,6 +4,14 @@ import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { createCardTemplate } from "/js/templates/listingCard.mjs";
 import * as components from "/js/components/index.mjs";
 
+/**
+ * Fetches and displays the logged-in user's listings.
+ * Handles errors and displays appropriate messages if fetching fails.
+ *
+ * @returns {Promise<void>} A promise that resolves once the user's listings are fetched and displayed.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
 let isFetchingListings = false;
 
 async function renderMyListings() {

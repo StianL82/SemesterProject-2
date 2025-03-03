@@ -2,6 +2,14 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 
+/**
+ * Updates the logged-in user's avatar by sending a PUT request to the API.
+ * Validates the input to ensure it is a valid URL before updating.
+ *
+ * @returns {Promise<void>} A promise that resolves once the avatar update is completed.
+ *
+ * @throws {Error} Displays an alert if the avatar update fails.
+ */
 export async function updateAvatar() {
   const loggedInUser = getLoggedInUser();
 
@@ -50,6 +58,9 @@ export async function updateAvatar() {
   }
 }
 
+/**
+ * Sets up an event listener for the avatar update button when the DOM is fully loaded.
+ */
 document.addEventListener("DOMContentLoaded", function () {
   const updateButton = document.querySelector(".updateAvatarButton");
   if (updateButton) {

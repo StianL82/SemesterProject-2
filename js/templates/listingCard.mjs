@@ -1,3 +1,13 @@
+/**
+ * Creates a card element for a listing.
+ *
+ * @param {Object} listingData - The listing data.
+ * @param {string} listingData.id - The unique identifier of the listing.
+ * @param {string} listingData.title - The title of the listing.
+ * @param {Array<Object>} listingData.media - An array of media objects containing image URLs.
+ * @param {string} listingData.endsAt - The expiration date of the listing in ISO format.
+ * @returns {HTMLElement} A `div` element representing the listing card.
+ */
 export function createCardTemplate(listingData) {
   const { id, title, media, endsAt } = listingData;
 

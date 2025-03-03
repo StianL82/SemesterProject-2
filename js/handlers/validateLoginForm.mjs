@@ -1,6 +1,11 @@
 import { validateEmail } from "./validateEmail.mjs";
 import { validatePassword } from "./validatePassword.mjs";
 
+/**
+ * Sets up validation for the login form fields.
+ * Listens for blur events on the email and password fields to trigger validation.
+ * Resets error messages on page load.
+ */
 export function validateLoginForm() {
   document.addEventListener("DOMContentLoaded", function () {
     resetErrors();

@@ -1,3 +1,9 @@
+/**
+ * Calculates the remaining time until a given deadline.
+ *
+ * @param {string} endsAt - The end date and time in ISO format.
+ * @returns {string} A string representing the remaining time (e.g., "2 days", "5 hours", "10 minutes", or "Expired").
+ */
 export function calculateTimeLeft(endsAt) {
   const now = new Date();
   const endsAtDate = new Date(endsAt);

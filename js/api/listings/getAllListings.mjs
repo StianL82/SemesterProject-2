@@ -1,6 +1,13 @@
 import { API_AUCTION_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
+/**
+ * Fetches all listings from the API, including seller and bid details.
+ *
+ * @returns {Promise<Array<Object>|null>} A promise that resolves to an array of listing objects if successful, or null if an error occurs.
+ *
+ * @throws {Error} Displays an error message if the request fails due to network issues, client errors, or server errors.
+ */
 const action = "/listings";
 
 export async function getAllListings() {

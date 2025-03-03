@@ -2,6 +2,15 @@ import { API_AUCTION_URL } from "/js/api/constants.mjs";
 import { getLoggedInUser } from "/js/components/getLoggedInUser.mjs";
 import { authFetch } from "/js/api/authFetch.mjs";
 
+/**
+ * Fetches and displays the logged-in user's profile information.
+ * Updates the UI with the user's username, email, credits, and avatar.
+ * Handles errors by displaying a default avatar if fetching fails.
+ *
+ * @returns {Promise<void>} A promise that resolves once the profile information is displayed.
+ *
+ * @throws {Error} Logs an error if the profile data cannot be fetched due to network issues, client errors, or server errors.
+ */
 export async function renderProfileInformation() {
   const user = getLoggedInUser();
 

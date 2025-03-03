@@ -1,5 +1,13 @@
 import { createListing } from "/js/api/listings/create.mjs";
 
+/**
+ * Handles the submission of the "Add Listing" form.
+ *
+ * @param {Event} event - The form submit event.
+ * @returns {Promise<void>} No return value, but creates a new listing and updates the UI on success.
+ *
+ * @throws {Error} Displays an error message if the listing creation fails due to network issues, client errors, or server errors.
+ */
 export async function handleAddListingForm(event) {
   event.preventDefault();
 
@@ -87,6 +95,10 @@ export async function handleAddListingForm(event) {
     }
   }
 }
+
+/**
+ * Sets up event listeners for the "Add Listing" form when the DOM is fully loaded.
+ */
 
 export function setupAddListingForm() {
   document.addEventListener("DOMContentLoaded", () => {
